@@ -1,5 +1,6 @@
 'use client';
 import React, { useRef } from 'react';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -19,9 +20,6 @@ export default function Principles() {
     gsap.registerPlugin(ScrollTrigger);
     gsap.fromTo('.principles-heading', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: containerRef.current, start: 'top 85%' } });
     gsap.fromTo('.principle-card', { y: 60, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 0.9, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.principles-grid', start: 'top 80%' } });
-    gsap.utils.toArray<HTMLElement>('.principle-num').forEach((el) => {
-      gsap.fromTo(el, { yPercent: 10 }, { yPercent: -10, ease: 'none', scrollTrigger: { trigger: el.closest('.principle-card'), start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
-    });
   }, { scope: containerRef });
 
   return (
@@ -29,7 +27,7 @@ export default function Principles() {
       <div className="max-w-[1400px] mx-auto">
         <div className="principles-heading parallax-section-heading mb-14 md:mb-20">
           <div className="mb-4">
-            <img src="/Lobster_Final.svg" alt="" style={{ width: 60, height: 'auto' }} />
+            <Image src="/Lobster_Final.svg" alt="" width={60} height={60} priority />
           </div>
           <span className="text-[10px] uppercase tracking-[0.1em] text-[#FF4F40] block mb-4">How We Work</span>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
@@ -66,8 +64,7 @@ function PrincipleCard({ principle, size }: { principle: typeof PRINCIPLES[0]; s
       >
         <div className="flex flex-col md:flex-row items-center justify-between p-8 md:p-10 lg:p-12 gap-6 md:gap-12">
           <div className="flex items-center gap-6 md:gap-10">
-            <span className="principle-num text-[11px] uppercase tracking-[0.1em] opacity-40 shrink-0">{principle.num}</span>
-            <h3 className="font-black text-4xl md:text-5xl lg:text-6xl leading-[0.9] tracking-tight">{principle.title.replace('\n', ' ')}</h3>
+            <h3 className="font-black text-4xl md:text-5xl lg:text-6xl leading-[48px] tracking-tight">{principle.title.replace('\n', ' ')}</h3>
           </div>
           <p className="text-[15px] md:text-base leading-relaxed opacity-60 max-w-md md:text-right shrink-0" style={{ letterSpacing: '-0.02em' }}>{principle.desc}</p>
         </div>
@@ -83,11 +80,10 @@ function PrincipleCard({ principle, size }: { principle: typeof PRINCIPLES[0]; s
     >
       <div className="relative z-10 flex flex-col justify-between h-full p-8 md:p-10">
         <div className="flex items-start justify-between">
-          <span className="principle-num text-[11px] uppercase tracking-[0.1em] opacity-40">{principle.num}</span>
           <div className="w-3 h-3 rounded-sm opacity-30 group-hover:opacity-60 group-hover:scale-125 transition-all duration-300" style={{ backgroundColor: principle.textColor }} />
         </div>
         <div>
-          <h3 className="font-black text-4xl md:text-5xl lg:text-[3.5rem] leading-[0.88] tracking-tight mb-4 whitespace-pre-line">{principle.title}</h3>
+          <h3 className="font-black text-4xl md:text-5xl lg:text-[3.5rem] leading-[48px] tracking-tight mb-4 whitespace-pre-line">{principle.title}</h3>
           <div className="w-10 h-[2px] mb-4 opacity-25 group-hover:w-16 transition-all duration-500" style={{ backgroundColor: principle.textColor }} />
           <p className="text-[14px] leading-relaxed opacity-50 max-w-[280px] group-hover:opacity-70 transition-opacity duration-400" style={{ letterSpacing: '-0.02em' }}>{principle.desc}</p>
         </div>
