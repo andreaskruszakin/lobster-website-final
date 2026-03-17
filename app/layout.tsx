@@ -11,6 +11,10 @@ const rubik = Rubik({
 export const metadata: Metadata = {
   title: "Lobster — Creative Web Studio",
   description: "The creative studio that builds digital experiences worth talking about.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
