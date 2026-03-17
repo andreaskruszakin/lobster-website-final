@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import BlobButton from './BlobButton';
 
 const WORK_ITEMS = [
-  { id: 1, title: 'Fashion E-Commerce', client: 'Susi Mob', category: 'Web App', image: '/images/4cd0e87280f410819433872a8b3967fb268b1694.png', accent: '#F26044' },
+  { id: 1, title: 'Fashion E-Commerce', client: 'Susi Mob', category: 'Web App', image: '/images/4cd0e87280f410819433872a8b3967fb268b1694.png', accent: '#FF4F40' },
   { id: 2, title: 'Craftwork Design', client: 'Craftwork', category: 'Branding', image: '/images/f2ef28fc0f4b5766c42c1fe15af0d3df07c563ea.png', accent: '#CDD6F4' },
   { id: 3, title: 'D Series Portfolio', client: 'Arpit Brandings', category: 'Web Design', image: '/images/cb81fb2be560e5f31e2169eedc19546972b0afe6.png', accent: '#1E1E2E' },
   { id: 4, title: 'Tablet Experience', client: 'Craftwork', category: 'Product Design', image: '/images/1fb5836b62a9ad79be882abfec8d58b8fee2fdec.png', accent: '#CDD6F4' },
@@ -35,11 +35,11 @@ function WorkCard({ item, config }: { item: typeof WORK_ITEMS[0]; config: typeof
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/70 via-[#1A1A1A]/5 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1E1A2E]/70 via-[#1E1A2E]/5 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
         </div>
         <div className="work-arrow-btn absolute top-5 right-5 z-30">
           <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm border border-white/20 scale-90 group-hover:scale-100 transition-all duration-400">
-            <svg className="w-3.5 h-3.5 text-[#1A1A1A] group-hover:rotate-45 transition-transform duration-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <svg className="w-3.5 h-3.5 text-[#1E1A2E] group-hover:rotate-45 transition-transform duration-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
             </svg>
           </div>
@@ -73,12 +73,12 @@ export default function Work() {
     <section id="work" ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#FDF8F3]">
       <div className="max-w-[1400px] mx-auto">
         <div className="work-heading parallax-section-heading mb-10 md:mb-14">
-          <span className="text-[10px] uppercase tracking-[0.1em] text-[#F26044] block mb-4">Selected Work</span>
+          <span className="text-[10px] uppercase tracking-[0.1em] text-[#FF4F40] block mb-4">Selected Work</span>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h2 className="font-black text-5xl md:text-7xl lg:text-[5.5rem] text-[#1A1A1A] leading-[0.88]">
-              Projects<span className="inline-block w-[0.13em] h-[0.13em] bg-[#F26044] rounded-[0.03em] ml-[0.06em] align-baseline" />
+            <h2 className="font-black text-5xl md:text-7xl lg:text-[5.5rem] text-[#1E1A2E] leading-[0.88]">
+              Projects<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
             </h2>
-            <p className="text-base text-[#1A1A1A]/50 max-w-sm leading-relaxed md:pb-2" style={{ letterSpacing: '-0.02em' }}>A few things we&apos;ve built that we&apos;re particularly proud of.</p>
+            <p className="text-base text-[#1E1A2E]/50 max-w-sm leading-relaxed md:pb-2" style={{ letterSpacing: '-0.02em' }}>A few things we&apos;ve built that we&apos;re particularly proud of.</p>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">

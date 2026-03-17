@@ -43,15 +43,15 @@ export default function Testimonials() {
     <section ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#FDF8F3]">
       <div className="max-w-[1400px] mx-auto">
         <div className="testimonials-heading parallax-section-heading mb-14 md:mb-20">
-          <span className="text-[10px] uppercase tracking-[0.1em] text-[#F26044] block mb-4">Social Proof</span>
-          <h2 className="font-black text-5xl md:text-7xl text-[#1A1A1A] leading-[0.9]">
-            What clients say<span className="inline-block w-[0.13em] h-[0.13em] bg-[#F26044] rounded-[0.03em] ml-[0.06em] align-baseline" />
+          <span className="text-[10px] uppercase tracking-[0.1em] text-[#FF4F40] block mb-4">Social Proof</span>
+          <h2 className="font-black text-5xl md:text-7xl text-[#1E1A2E] leading-[0.9]">
+            What clients say<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
           </h2>
         </div>
         <div className="testimonials-grid grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
           {TESTIMONIALS.map((t, i) => (
-            <div key={i} className="testimonial-card bg-white rounded-[28px] p-8 md:p-10 border border-[#1A1A1A]/[0.06] flex flex-col justify-between min-h-[220px]">
-              <p className="text-[16px] md:text-[18px] text-[#1A1A1A] leading-[1.6] mb-8" style={{ letterSpacing: '-0.02em' }}>
+            <div key={i} className="testimonial-card bg-white rounded-[28px] p-8 md:p-10 border border-[#1E1A2E]/[0.06] flex flex-col justify-between min-h-[220px]">
+              <p className="text-[16px] md:text-[18px] text-[#1E1A2E] leading-[1.6] mb-8" style={{ letterSpacing: '-0.02em' }}>
                 &ldquo;{t.quote}&rdquo;
               </p>
               <div className="flex items-center gap-4">
@@ -60,8 +60,8 @@ export default function Testimonials() {
                   <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
                 </div>
                 <div>
-                  <p className="text-[14px] font-semibold text-[#1A1A1A]" style={{ letterSpacing: '-0.02em' }}>{t.name}</p>
-                  <p className="text-[12px] text-[#1A1A1A]/40">{t.role}</p>
+                  <p className="text-[14px] font-semibold text-[#1E1A2E]" style={{ letterSpacing: '-0.02em' }}>{t.name}</p>
+                  <p className="text-[12px] text-[#1E1A2E]/40">{t.role}</p>
                 </div>
               </div>
             </div>

@@ -112,17 +112,17 @@ export default function Footer() {
       {/* CTA Section */}
       <div className="relative pt-28 md:pt-36 pb-20 md:pb-24 px-6 md:px-12">
         <div className="max-w-[1400px] mx-auto text-center relative">
-          <h2 className="footer-cta-headline font-black text-[clamp(3rem,10vw,8rem)] leading-[0.88] tracking-tight text-[#1A1A1A]">
-            Let&apos;s Build<br />Something<span className="inline-block w-[0.13em] h-[0.13em] bg-[#F26044] rounded-[0.03em] ml-[0.06em] align-baseline" />
+          <h2 className="footer-cta-headline font-black text-[clamp(3rem,10vw,8rem)] leading-[0.88] tracking-tight text-[#1E1A2E]">
+            Let&apos;s Build<br />Something<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
           </h2>
           <div className="footer-cta-btns mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a href="mailto:hello@lobster.agency" className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-2xl border border-[#1A1A1A]/10 hover:border-[#1A1A1A]/25 transition-all duration-300">
-              <span className="text-[14px] font-medium text-[#1A1A1A]" style={{ letterSpacing: '-0.02em' }}>Email us</span>
-              <div className="w-10 h-10 rounded-xl bg-[#1A1A1A] flex items-center justify-center">
+            <a href="mailto:hello@lobster.agency" className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-2xl border border-[#1E1A2E]/10 hover:border-[#1E1A2E]/25 transition-all duration-300">
+              <span className="text-[14px] font-medium text-[#1E1A2E]" style={{ letterSpacing: '-0.02em' }}>Email us</span>
+              <div className="w-10 h-10 rounded-xl bg-[#1E1A2E] flex items-center justify-center">
                 <Mail className="w-4 h-4 text-[#FDF8F3]" />
               </div>
             </a>
-            <button onClick={() => scrollTo('contact')} className="bg-[#F26044] text-white px-7 py-3.5 rounded-xl text-[14px] font-semibold hover:bg-[#ff7d63] active:scale-95 transition-all duration-300">
+            <button onClick={() => scrollTo('contact')} className="bg-[#FF4F40] text-white px-7 py-3.5 rounded-xl text-[14px] font-semibold hover:bg-[#ff7d63] active:scale-95 transition-all duration-300">
               Start a project →
             </button>
           </div>
@@ -137,7 +137,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom */}
-      <div className="footer-bottom relative bg-[#E8E3DB] text-[#1A1A1A]">
+      <div className="footer-bottom relative bg-[#E8E3DB] text-[#1E1A2E]">
         <div className="pt-10 md:pt-14 pb-8 px-6 md:px-12">
           <div className="max-w-[1400px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 items-end mb-12 md:mb-16">
@@ -149,15 +149,15 @@ export default function Footer() {
               <div className="md:col-span-4 flex flex-col items-start md:items-center gap-8">
                 <div className="footer-bottom-reveal flex flex-wrap gap-2">
                   {NAV_LINKS.map((link) => (
-                    <button key={link.id} onClick={() => scrollTo(link.id)} className="px-5 py-2.5 rounded-2xl border border-[#1A1A1A]/10 text-[13px] font-medium text-[#1A1A1A]/70 hover:text-[#1A1A1A] hover:border-[#1A1A1A]/25 hover:bg-white/50 transition-all duration-300">
+                    <button key={link.id} onClick={() => scrollTo(link.id)} className="px-5 py-2.5 rounded-2xl border border-[#1E1A2E]/10 text-[13px] font-medium text-[#1E1A2E]/70 hover:text-[#1E1A2E] hover:border-[#1E1A2E]/25 hover:bg-white/50 transition-all duration-300">
                       {link.label}
                     </button>
                   ))}
                 </div>
                 <div className="footer-bottom-reveal flex items-center gap-4">
-                  <span className="text-[10px] uppercase tracking-[0.08em] text-[#1A1A1A]/30 mr-1">Follow us</span>
+                  <span className="text-[10px] uppercase tracking-[0.08em] text-[#1E1A2E]/30 mr-1">Follow us</span>
                   {SOCIALS.map((social) => (
-                    <a key={social.label} href={social.href} aria-label={social.label} className="w-9 h-9 rounded-xl border border-[#1A1A1A]/10 flex items-center justify-center text-[#1A1A1A]/50 hover:text-[#F26044] hover:border-[#F26044]/30 hover:bg-white/60 transition-all duration-300">
+                    <a key={social.label} href={social.href} aria-label={social.label} className="w-9 h-9 rounded-xl border border-[#1E1A2E]/10 flex items-center justify-center text-[#1E1A2E]/50 hover:text-[#FF4F40] hover:border-[#FF4F40]/30 hover:bg-white/60 transition-all duration-300">
                       <social.icon className="w-4 h-4" />
                     </a>
                   ))}
@@ -165,19 +165,19 @@ export default function Footer() {
               </div>
               <div className="md:col-span-3 flex flex-col gap-6 md:items-end">
                 <div className="footer-bottom-reveal">
-                  <p className="text-[9px] uppercase tracking-[0.08em] text-[#1A1A1A]/30 mb-1.5">Contact</p>
-                  <a href="mailto:hello@lobster.agency" className="text-[14px] text-[#1A1A1A]/70 hover:text-[#F26044] transition-colors block" style={{ letterSpacing: '-0.02em' }}>hello@lobster.agency</a>
-                  <p className="text-[14px] text-[#1A1A1A]/70 mt-0.5" style={{ letterSpacing: '-0.02em' }}>+44 20 7946 0958</p>
+                  <p className="text-[9px] uppercase tracking-[0.08em] text-[#1E1A2E]/30 mb-1.5">Contact</p>
+                  <a href="mailto:hello@lobster.agency" className="text-[14px] text-[#1E1A2E]/70 hover:text-[#FF4F40] transition-colors block" style={{ letterSpacing: '-0.02em' }}>hello@lobster.agency</a>
+                  <p className="text-[14px] text-[#1E1A2E]/70 mt-0.5" style={{ letterSpacing: '-0.02em' }}>+44 20 7946 0958</p>
                 </div>
                 <div className="footer-bottom-reveal">
-                  <p className="text-[9px] uppercase tracking-[0.08em] text-[#1A1A1A]/30 mb-1.5">Address</p>
-                  <p className="text-[14px] text-[#1A1A1A]/70" style={{ letterSpacing: '-0.02em' }}>Shoreditch, London<br />EC2A 4NE, UK</p>
+                  <p className="text-[9px] uppercase tracking-[0.08em] text-[#1E1A2E]/30 mb-1.5">Address</p>
+                  <p className="text-[14px] text-[#1E1A2E]/70" style={{ letterSpacing: '-0.02em' }}>Shoreditch, London<br />EC2A 4NE, UK</p>
                 </div>
               </div>
             </div>
-            <div className="footer-bottom-reveal pt-6 border-t border-[#1A1A1A]/[0.06] flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-[#1A1A1A]/30">
+            <div className="footer-bottom-reveal pt-6 border-t border-[#1E1A2E]/[0.06] flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-[#1E1A2E]/30">
               <p>&copy; {new Date().getFullYear()} Lobster Agency. All rights reserved.</p>
-              <a href="#" className="hover:text-[#1A1A1A]/60 transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-[#1E1A2E]/60 transition-colors">Privacy Policy</a>
             </div>
           </div>
         </div>

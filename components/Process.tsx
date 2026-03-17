@@ -20,13 +20,13 @@ export default function Process() {
   }, { scope: containerRef });
 
   return (
-    <section id="process" ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#1A1A1A] overflow-hidden">
+    <section id="process" ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#1E1A2E] overflow-hidden">
       <div className="max-w-[1400px] mx-auto">
         <div className="process-heading mb-16 md:mb-20">
-          <span className="text-[10px] uppercase tracking-[0.1em] text-[#F26044] block mb-4">How It Works</span>
+          <span className="text-[10px] uppercase tracking-[0.1em] text-[#FF4F40] block mb-4">How It Works</span>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <h2 className="font-black text-5xl md:text-7xl text-[#FDF8F3] leading-[0.9]">
-              The Process<span className="inline-block w-[0.13em] h-[0.13em] bg-[#F26044] rounded-[0.03em] ml-[0.06em] align-baseline" />
+              The Process<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
             </h2>
             <p className="text-base text-[#FDF8F3]/40 max-w-sm leading-relaxed md:pb-2" style={{ letterSpacing: '-0.02em' }}>
               Four steps, zero surprises. This is exactly how we work on every project.
@@ -37,7 +37,7 @@ export default function Process() {
           {STEPS.map((step, i) => (
             <div key={i} className="process-step grid grid-cols-12 gap-6 py-10 items-baseline">
               <div className="col-span-2 md:col-span-1">
-                <span className="font-black text-[#F26044] text-3xl md:text-4xl leading-none">{step.num}</span>
+                <span className="font-black text-[#FF4F40] text-3xl md:text-4xl leading-none">{step.num}</span>
               </div>
               <div className="col-span-10 md:col-span-4">
                 <h3 className="font-black text-[#FDF8F3] text-2xl md:text-3xl leading-tight">{step.title}</h3>

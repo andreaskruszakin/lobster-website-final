@@ -15,8 +15,8 @@ export default function BlobButton({
   children,
   onClick,
   className = '',
-  blobColor = '#F26044',
-  textColor = '#1A1A1A',
+  blobColor = '#FF4F40',
+  textColor = '#1E1A2E',
   hoverTextColor = '#FDF8F3',
 }: BlobButtonProps) {
   const btnRef = useRef<HTMLButtonElement>(null);
@@ -46,7 +46,7 @@ export default function BlobButton({
   };
 
   const isOnDark = textColor === '#FDF8F3' || textColor === 'white';
-  const defaultBorderClass = isOnDark ? 'border-[#FDF8F3]/15' : 'border-[#1A1A1A]/10';
+  const defaultBorderClass = isOnDark ? 'border-[#FDF8F3]/15' : 'border-[#1E1A2E]/10';
 
   return (
     <button

@@ -36,7 +36,7 @@ export default function Navbar() {
         animate={isHidden ? 'hidden' : 'visible'}
         transition={{ type: 'spring', stiffness: 260, damping: 24 }}
         className={`pointer-events-auto px-2 py-2 rounded-2xl flex items-center gap-1 max-w-[90vw] transition-all duration-500 ${
-          isScrolled ? 'bg-[#1A1A1A]/95 backdrop-blur-2xl border border-white/[0.08]' : 'bg-[#1A1A1A]/80 backdrop-blur-xl border border-white/[0.04]'
+          isScrolled ? 'bg-[#1E1A2E]/95 backdrop-blur-2xl border border-white/[0.08]' : 'bg-[#1E1A2E]/80 backdrop-blur-xl border border-white/[0.04]'
         }`}
       >
         <div className="pl-4 pr-2 flex items-center">
@@ -62,7 +62,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 8, scale: 0.96 }}
                   transition={{ duration: 0.18, ease: 'easeOut' }}
-                  className="absolute top-full left-0 mt-2 w-56 bg-[#1A1A1A]/98 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-xl"
+                  className="absolute top-full left-0 mt-2 w-56 bg-[#1E1A2E]/98 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-xl"
                 >
                   {SERVICE_ITEMS.map((item) => (
                     <button
@@ -95,7 +95,7 @@ export default function Navbar() {
 
         <button
           onClick={() => scrollTo('contact')}
-          className="ml-1 bg-[#F26044] text-white px-5 py-2.5 rounded-xl text-[13px] font-semibold hover:bg-[#ff7d63] active:scale-95 transition-all duration-300 flex items-center gap-2"
+          className="ml-1 bg-[#FF4F40] text-white px-5 py-2.5 rounded-xl text-[13px] font-semibold hover:bg-[#ff7d63] active:scale-95 transition-all duration-300 flex items-center gap-2"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white/60 opacity-75" />

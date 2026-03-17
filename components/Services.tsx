@@ -10,22 +10,22 @@ const SERVICES = [
     id: 'experience', title: 'Digital Experience',
     description: 'Interfaces that feel invisible. We craft performant front-ends that users actually enjoy using.',
     capabilities: ['React & Next.js', 'Design Systems', 'Interactive WebGL', 'Motion & Animation'],
-    bg: '#FFF5EF', accent: '#F26044', textColor: '#1A1A1A',
-    illustrationSrc: '/Lighthouse_Final.svg', illustrationW: 160,
+    bg: '#FFF5EF', accent: '#FF4F40', textColor: '#1E1A2E',
+    illustrationSrc: '/Lighthouse_Final.svg',
   },
   {
     id: 'data', title: 'Data Engineering',
     description: 'We structure chaos into clarity. Pipelines, warehousing, and analytics that empower decision making.',
     capabilities: ['ETL & Pipelines', 'Data Warehousing', 'Real-time Analytics', 'ML Integration'],
-    bg: '#EEEAF8', accent: '#9B8EC4', textColor: '#1A1A1A',
-    illustrationSrc: '/Folder_Final.svg', illustrationW: 180,
+    bg: '#EEEAF8', accent: '#B9B0E8', textColor: '#1E1A2E',
+    illustrationSrc: '/Folder_Final.svg',
   },
   {
     id: 'infra', title: 'Infrastructure',
     description: 'Rock-solid foundations. Scalable cloud architectures that grow with your business needs.',
     capabilities: ['AWS / GCP / Azure', 'DevOps Automation', 'Security & Compliance', 'CI/CD Pipelines'],
-    bg: '#1E1E2E', accent: '#F26044', textColor: '#FDF8F3',
-    illustrationSrc: '/Server_Final.svg', illustrationW: 150,
+    bg: '#1E1A2E', accent: '#FF4F40', textColor: '#FDF8F3',
+    illustrationSrc: '/Server_Final.svg',
   },
 ];
 
@@ -38,10 +38,10 @@ function ServiceCard({ service }: { service: typeof SERVICES[0] }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="relative flex items-center justify-center pt-10 pb-4 md:pt-12 md:pb-6 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] rounded-full blur-[60px] opacity-30 group-hover:opacity-50 transition-opacity duration-500" style={{ backgroundColor: service.accent }} />
-        <div className="service-sticker relative transition-transform duration-500 group-hover:scale-105" style={{ width: service.illustrationW }}>
-          <img src={service.illustrationSrc} alt={service.title} className="w-full h-auto" />
+      <div className="relative flex items-center justify-center pt-10 pb-2 md:pt-12 overflow-hidden" style={{ minHeight: 160 }}>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full blur-[50px] opacity-25 group-hover:opacity-45 transition-opacity duration-500" style={{ backgroundColor: service.accent }} />
+        <div className="service-sticker relative transition-transform duration-500 group-hover:scale-105 flex items-center justify-center" style={{ height: 120 }}>
+          <img src={service.illustrationSrc} alt={service.title} className="h-full w-auto max-w-[110px] object-contain" />
         </div>
       </div>
       <div className="relative z-10 px-7 pb-8 md:px-9 md:pb-10 pt-4 md:pt-6">
@@ -81,12 +81,12 @@ export default function Services() {
       <div className="max-w-[1400px] mx-auto">
         <div className="services-heading parallax-section-heading mb-16 md:mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
-            <span className="text-[10px] uppercase tracking-[0.1em] text-[#F26044] block mb-3">What We Do</span>
-            <h2 className="font-black text-5xl md:text-7xl text-[#1A1A1A] leading-[0.9]">
-              Services<span className="inline-block w-[0.13em] h-[0.13em] bg-[#F26044] rounded-[0.03em] ml-[0.06em] align-baseline" />
+            <span className="text-[10px] uppercase tracking-[0.1em] text-[#FF4F40] block mb-3">What We Do</span>
+            <h2 className="font-black text-5xl md:text-7xl text-[#1E1A2E] leading-[0.9]">
+              Services<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
             </h2>
           </div>
-          <p className="text-base text-[#1A1A1A]/50 max-w-sm leading-relaxed">Three pillars. One obsession: building digital products that actually matter.</p>
+          <p className="text-base text-[#1E1A2E]/50 max-w-sm leading-relaxed">Three pillars. One obsession: building digital products that actually matter.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
           {SERVICES.map((service, i) => <ServiceCard key={service.id} service={service} />)}

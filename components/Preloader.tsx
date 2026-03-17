@@ -37,8 +37,8 @@ export default function Preloader({ onComplete }: PreloaderProps) {
 
   return (
     <div className="fixed inset-0 z-[100] pointer-events-auto">
-      <div className="preloader-curtain-top absolute top-0 left-0 right-0 h-1/2 bg-[#1A1A1A]" />
-      <div className="preloader-curtain-bottom absolute bottom-0 left-0 right-0 h-1/2 bg-[#1A1A1A]" />
+      <div className="preloader-curtain-top absolute top-0 left-0 right-0 h-1/2 bg-[#1E1A2E]" />
+      <div className="preloader-curtain-bottom absolute bottom-0 left-0 right-0 h-1/2 bg-[#1E1A2E]" />
       <div className="preloader-content absolute inset-0 flex flex-col items-center justify-center z-10 gap-4">
         <div className="lobster-animation-container w-[140px] md:w-[160px]">
           <img src="/Lobster_Final.svg" alt="Lobster" className="lobster-illustration w-full h-auto" />
@@ -51,7 +51,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         <p className="preloader-tagline text-[10px] uppercase tracking-[0.1em] text-[#FDF8F3]/30">Creative Web Studio</p>
         <div className="w-48 md:w-64 mt-4">
           <div className="h-[1px] bg-[#FDF8F3]/10 rounded-full overflow-hidden">
-            <div className="preloader-bar-fill h-full bg-[#F26044] rounded-full" />
+            <div className="preloader-bar-fill h-full bg-[#FF4F40] rounded-full" />
           </div>
           <div className="flex justify-between mt-3">
             <span className="text-[10px] text-[#FDF8F3]/20 uppercase tracking-[0.06em]">Loading</span>

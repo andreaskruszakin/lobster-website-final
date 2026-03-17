@@ -74,7 +74,7 @@ export default function HomePage() {
   }, [isLoading]);
 
   return (
-    <div className="min-h-screen bg-[#FDF8F3] text-[#1A1A1A] selection:bg-[#F26044] selection:text-white">
+    <div className="min-h-screen bg-[#FDF8F3] text-[#1E1A2E] selection:bg-[#FF4F40] selection:text-white">
       {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
       {!isLoading && <Navbar />}
       <main>

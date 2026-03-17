@@ -5,11 +5,11 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const PRINCIPLES = [
-  { num: '01', title: 'Bold by\nDefault', desc: 'We make decisions. We take positions. No mealy-mouthed hedging — just clear, confident work.', color: '#F26044', textColor: '#FDF8F3', rotate: -1.5 },
-  { num: '02', title: 'Experts\nOnly', desc: 'Talk to the builders, not account managers. Senior engineers, zero layers of bureaucracy.', color: '#1A1A1A', textColor: '#FDF8F3', rotate: 1 },
-  { num: '03', title: 'Ship >\nSlides', desc: 'We ship production code, not pitch decks. Results over presentations, always.', color: '#FFC4A3', textColor: '#1A1A1A', rotate: -0.5 },
-  { num: '04', title: 'Prove\nit Works', desc: 'We think before we build. Expert consultancy baked into every project we take on.', color: '#C4C3E0', textColor: '#1A1A1A', rotate: 1.5 },
-  { num: '05', title: 'No Nonsense', desc: 'Clear communication, no jargon. We speak human — always. No exceptions.', color: '#1A1A1A', textColor: '#FDF8F3', rotate: -0.8 },
+  { num: '01', title: 'Bold by\nDefault', desc: 'We make decisions. We take positions. No mealy-mouthed hedging — just clear, confident work.', color: '#FF4F40', textColor: '#FDF8F3', rotate: -1.5 },
+  { num: '02', title: 'Experts\nOnly', desc: 'Talk to the builders, not account managers. Senior engineers, zero layers of bureaucracy.', color: '#1E1A2E', textColor: '#FDF8F3', rotate: 1 },
+  { num: '03', title: 'Ship >\nSlides', desc: 'We ship production code, not pitch decks. Results over presentations, always.', color: '#FFC4A3', textColor: '#1E1A2E', rotate: -0.5 },
+  { num: '04', title: 'Prove\nit Works', desc: 'We think before we build. Expert consultancy baked into every project we take on.', color: '#C4C3E0', textColor: '#1E1A2E', rotate: 1.5 },
+  { num: '05', title: 'No Nonsense', desc: 'Clear communication, no jargon. We speak human — always. No exceptions.', color: '#1E1A2E', textColor: '#FDF8F3', rotate: -0.8 },
 ];
 
 export default function Principles() {
@@ -28,12 +28,12 @@ export default function Principles() {
     <section id="principles" ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#FDF8F3]">
       <div className="max-w-[1400px] mx-auto">
         <div className="principles-heading parallax-section-heading mb-14 md:mb-20">
-          <span className="text-[10px] uppercase tracking-[0.1em] text-[#F26044] block mb-4">How We Work</span>
+          <span className="text-[10px] uppercase tracking-[0.1em] text-[#FF4F40] block mb-4">How We Work</span>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h2 className="font-black text-5xl md:text-7xl text-[#1A1A1A] leading-[0.9]">
-              We don&apos;t mess<br />around<span className="inline-block w-[0.13em] h-[0.13em] bg-[#F26044] rounded-[0.03em] ml-[0.06em] align-baseline" />
+            <h2 className="font-black text-5xl md:text-7xl text-[#1E1A2E] leading-[0.9]">
+              We don&apos;t mess<br />around<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
             </h2>
-            <p className="text-base text-[#1A1A1A]/50 max-w-sm leading-relaxed md:pb-2" style={{ letterSpacing: '-0.02em' }}>
+            <p className="text-base text-[#1E1A2E]/50 max-w-sm leading-relaxed md:pb-2" style={{ letterSpacing: '-0.02em' }}>
               Five non-negotiables that define how we operate and what you can expect from us.
             </p>
           </div>

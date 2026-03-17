@@ -1,21 +1,39 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'BN Sonic';
+  src: url('/fonts/BNSonic.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+
 @theme inline {
   --font-sans: var(--font-rubik), sans-serif;
 }
 
 body {
   background-color: #FDF8F3;
-  color: #1A1A1A;
+  color: #1E1A2E;
   font-family: var(--font-rubik), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 *:focus-visible {
-  outline: 2px solid #F26044;
+  outline: 2px solid #FF4F40;
   outline-offset: 2px;
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.animate-marquee { animation: marquee 28s linear infinite; }
+.animate-marquee-slow { animation: marquee 38s linear infinite; }
 
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #FDF8F3; }
