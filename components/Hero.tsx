@@ -61,36 +61,17 @@ export default function Hero({ isReady = true }: { isReady?: boolean }) {
     );
 
     gsap.to('.hero-illustration', { y: -16, rotation: 4, duration: 4.2, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 0.8 });
-    gsap.to('.blob-1', { x: 50, y: -35, scale: 1.12, duration: 9, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-    gsap.to('.blob-2', { x: -40, y: 50, scale: 0.88, duration: 12, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2 });
-    gsap.to('.blob-3', { x: 30, y: 25, scale: 1.06, duration: 8, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1 });
   }, { scope: containerRef, dependencies: [isReady] });
 
   return (
     <section ref={containerRef} className="relative min-h-[100dvh] flex flex-col overflow-hidden" style={{ backgroundColor: '#FF4F40' }}>
-      {/* Grain */}
-      <div
-        className="absolute inset-0 z-30 pointer-events-none opacity-[0.045] mix-blend-multiply"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          backgroundSize: '128px 128px',
-        }}
-      />
-
-      {/* Ambient blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="blob-1 absolute top-[8%] left-[8%] w-[42vw] h-[42vw] rounded-full blur-[110px]" style={{ backgroundColor: '#FE9B66', opacity: 0.4 }} />
-        <div className="blob-2 absolute bottom-[8%] right-[4%] w-[36vw] h-[36vw] rounded-full blur-[90px]" style={{ backgroundColor: '#B9B0E8', opacity: 0.28 }} />
-        <div className="blob-3 absolute top-[45%] left-[45%] w-[26vw] h-[26vw] rounded-full blur-[80px]" style={{ backgroundColor: '#FF4F40', opacity: 0.2 }} />
-      </div>
-
       {/* Illustration — right side, mouse-parallax */}
       <div
         ref={stickerRef}
         className="absolute z-20 pointer-events-none"
         style={{ right: '3%', top: '50%', transform: 'translateY(-50%)', width: 'clamp(170px, 24vw, 340px)' }}
       >
-        <img src="/Lobster_Final.svg" alt="" className="hero-illustration w-full h-auto" />
+        <img src="/Lobster_Final_Hero.svg" alt="" className="hero-illustration w-full h-auto" />
       </div>
 
       {/* Top metadata */}

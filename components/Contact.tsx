@@ -18,7 +18,6 @@ export default function Contact() {
 
   return (
     <section id="contact" ref={containerRef} className="py-32 md:py-40 px-6 md:px-12 bg-[#FDF8F3] relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[#CDD6F4]/20 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/4" />
       <div className="max-w-[1400px] mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left column */}

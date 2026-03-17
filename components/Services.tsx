@@ -39,7 +39,6 @@ function ServiceCard({ service }: { service: typeof SERVICES[0] }) {
       onMouseLeave={() => setHovered(false)}
     >
       <div className="relative flex items-center justify-center pt-10 pb-2 md:pt-12 overflow-hidden" style={{ minHeight: 160 }}>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full blur-[50px] opacity-25 group-hover:opacity-45 transition-opacity duration-500" style={{ backgroundColor: service.accent }} />
         <div className="service-sticker relative transition-transform duration-500 group-hover:scale-105 flex items-center justify-center" style={{ height: 120 }}>
           <img src={service.illustrationSrc} alt={service.title} className="h-full w-auto max-w-[110px] object-contain" />
         </div>

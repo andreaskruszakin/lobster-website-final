@@ -33,7 +33,7 @@ export default function Process() {
         </div>
 
         {/* Card */}
-        <div className="process-card rounded-[36px] px-8 py-10 md:px-12 md:py-14" style={{ backgroundColor: '#EDE6DC' }}>
+        <div className="process-card rounded-[36px] px-8 py-10 md:px-12 md:py-14" style={{ backgroundColor: '#F7F2EC' }}>
           <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#1E1A2E]/10">
             {STEPS.map((step, i) => (
               <div key={i} className={`process-col flex flex-col gap-3 py-8 md:py-0 ${i === 0 ? '' : 'md:pl-10'} ${i < STEPS.length - 1 ? 'md:pr-10' : ''}`}>
