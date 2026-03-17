@@ -4,12 +4,6 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, Linkedin, Twitter, Instagram, Github } from 'lucide-react';
-import svgPaths from '@/imports/svg-2yo5qb1oi5';
-import LobsterSittingSticker from '@/imports/LobsterSittingSticker';
-import LobsterStandingSticker from '@/imports/LobsterStandingSticker';
-import LobsterWavingSticker from '@/imports/LobsterWavingSticker';
-import LobsterCodingSticker from '@/imports/LobsterCodingSticker';
-import LobsterCallingSticker from '@/imports/LobsterCallingSticker';
 
 const NAV_LINKS = [
   { label: 'Services', id: 'services' },
@@ -24,11 +18,11 @@ const SOCIALS = [
   { icon: Github, label: 'GitHub', href: '#' },
 ];
 const STICKERS = [
-  { id: 'sitting', Component: LobsterSittingSticker, w: 450, h: 400 },
-  { id: 'standing', Component: LobsterStandingSticker, w: 450, h: 430 },
-  { id: 'waving', Component: LobsterWavingSticker, w: 460, h: 450 },
-  { id: 'coding', Component: LobsterCodingSticker, w: 480, h: 420 },
-  { id: 'calling', Component: LobsterCallingSticker, w: 500, h: 430 },
+  { id: 'lobster', src: '/Lobster_Final.svg', w: 293, h: 316 },
+  { id: 'squid', src: '/Squid_Final.svg', w: 402, h: 294 },
+  { id: 'lighthouse', src: '/Lighthouse_Final.svg', w: 203, h: 331 },
+  { id: 'folder', src: '/Folder_Final.svg', w: 292, h: 242 },
+  { id: 'server', src: '/Server_Final.svg', w: 199, h: 260 },
 ];
 const SPAWN_POSITIONS = [
   { x: 8, y: 12 }, { x: 85, y: 12 }, { x: 8, y: 50 }, { x: 85, y: 50 },
@@ -36,26 +30,9 @@ const SPAWN_POSITIONS = [
   { x: 25, y: 75 }, { x: 60, y: 15 },
 ];
 
-function NavLogo({ scale }: { scale: number }) {
-  return (
-    <div style={{ width: 1230, height: 240, transform: `scale(${scale})`, transformOrigin: 'top left' }}>
-      <svg viewBox="0 0 1182.92 167.814" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 1182.92, height: 167.814 }}>
-        <path d={svgPaths.pc9f1500} fill="#1A1A1A" fillRule="evenodd" clipRule="evenodd" />
-        <path d={svgPaths.p180b7340} fill="#1A1A1A" />
-        <path d={svgPaths.p1d91f111} fill="#1A1A1A" />
-        <path d={svgPaths.p26957c80} fill="#1A1A1A" />
-        <path d={svgPaths.p22223600} fill="#1A1A1A" />
-        <path d={svgPaths.p32616c40} fill="#1A1A1A" />
-        <path d={svgPaths.p1b198880} fill="#1A1A1A" />
-        <path d={svgPaths.p14cae540} fill="#1A1A1A" />
-      </svg>
-    </div>
-  );
-}
-
 interface PopupSticker { key: number; stickerIdx: number; posIdx: number }
 
-function StickerPopup({ StickerComponent, naturalW, naturalH, scale, x, y }: { StickerComponent: React.ComponentType; naturalW: number; naturalH: number; scale: number; x: number; y: number }) {
+function StickerPopup({ src, naturalW, naturalH, scale, x, y }: { src: string; naturalW: number; naturalH: number; scale: number; x: number; y: number }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current;
@@ -68,9 +45,7 @@ function StickerPopup({ StickerComponent, naturalW, naturalH, scale, x, y }: { S
   const displayH = naturalH * scale;
   return (
     <div ref={ref} className="absolute" style={{ left: `clamp(0px, calc(${x}% - ${displayW / 2}px), calc(100% - ${displayW}px))`, top: `clamp(0px, calc(${y}% - ${displayH / 2}px), calc(100% - ${displayH}px))`, width: displayW, height: displayH, opacity: 0, willChange: 'transform, opacity' }}>
-      <div className="relative origin-top-left" style={{ width: naturalW, height: naturalH, transform: `scale(${scale})` }}>
-        <StickerComponent />
-      </div>
+      <img src={src} alt="" style={{ width: displayW, height: displayH, objectFit: 'contain' }} />
     </div>
   );
 }
@@ -78,7 +53,6 @@ function StickerPopup({ StickerComponent, naturalW, naturalH, scale, x, y }: { S
 export default function Footer() {
   const containerRef = useRef<HTMLDivElement>(null);
   const logoContainerRef = useRef<HTMLDivElement>(null);
-  const [logoScale, setLogoScale] = useState(0.3);
   const [isHovering, setIsHovering] = useState(false);
   const [popups, setPopups] = useState<PopupSticker[]>([]);
   const popupKeyRef = useRef(0);
@@ -113,15 +87,6 @@ export default function Footer() {
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [isHovering, spawnSticker]);
 
-  useEffect(() => {
-    const el = logoContainerRef.current;
-    if (!el) return;
-    const observer = new ResizeObserver((entries) => {
-      for (const entry of entries) setLogoScale(entry.contentRect.width / 1230);
-    });
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -140,24 +105,24 @@ export default function Footer() {
           const pos = SPAWN_POSITIONS[popup.posIdx];
           const displaySize = 110;
           const scale = displaySize / Math.max(sticker.w, sticker.h);
-          return <StickerPopup key={popup.key} StickerComponent={sticker.Component} naturalW={sticker.w} naturalH={sticker.h} scale={scale} x={pos.x} y={pos.y} />;
+          return <StickerPopup key={popup.key} src={sticker.src} naturalW={sticker.w} naturalH={sticker.h} scale={scale} x={pos.x} y={pos.y} />;
         })}
       </div>
 
       {/* CTA Section */}
       <div className="relative pt-28 md:pt-36 pb-20 md:pb-24 px-6 md:px-12">
         <div className="max-w-[1400px] mx-auto text-center relative">
-          <h2 className="footer-cta-headline font-['BN_Rollcall','Anton',sans-serif] text-[clamp(3rem,10vw,8rem)] leading-[0.88] tracking-tight text-[#1A1A1A]">
+          <h2 className="footer-cta-headline font-black text-[clamp(3rem,10vw,8rem)] leading-[0.88] tracking-tight text-[#1A1A1A]">
             Let&apos;s Build<br />Something<span className="inline-block w-[0.13em] h-[0.13em] bg-[#F26044] rounded-[0.03em] ml-[0.06em] align-baseline" />
           </h2>
           <div className="footer-cta-btns mt-10 flex flex-wrap items-center justify-center gap-4">
             <a href="mailto:hello@lobster.agency" className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-2xl border border-[#1A1A1A]/10 hover:border-[#1A1A1A]/25 transition-all duration-300">
-              <span className="font-['Inter'] text-[14px] font-medium text-[#1A1A1A]" style={{ letterSpacing: '-0.02em' }}>Email us</span>
+              <span className="text-[14px] font-medium text-[#1A1A1A]" style={{ letterSpacing: '-0.02em' }}>Email us</span>
               <div className="w-10 h-10 rounded-xl bg-[#1A1A1A] flex items-center justify-center">
                 <Mail className="w-4 h-4 text-[#FDF8F3]" />
               </div>
             </a>
-            <button onClick={() => scrollTo('contact')} className="bg-[#F26044] text-white px-7 py-3.5 rounded-xl font-['Inter'] text-[14px] font-semibold hover:bg-[#ff7d63] active:scale-95 transition-all duration-300">
+            <button onClick={() => scrollTo('contact')} className="bg-[#F26044] text-white px-7 py-3.5 rounded-xl text-[14px] font-semibold hover:bg-[#ff7d63] active:scale-95 transition-all duration-300">
               Start a project →
             </button>
           </div>
@@ -177,20 +142,20 @@ export default function Footer() {
           <div className="max-w-[1400px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 items-end mb-12 md:mb-16">
               <div className="md:col-span-5 overflow-hidden">
-                <div ref={logoContainerRef} className="footer-giant-text select-none pointer-events-none overflow-hidden" style={{ width: 'clamp(220px, 32vw, 400px)', aspectRatio: '1230 / 240' }}>
-                  <NavLogo scale={logoScale} />
+                <div ref={logoContainerRef} className="footer-giant-text select-none pointer-events-none" style={{ width: 'clamp(220px, 32vw, 400px)' }}>
+                  <img src="/Logo_Final.svg" alt="Lobster" className="w-full h-auto" />
                 </div>
               </div>
               <div className="md:col-span-4 flex flex-col items-start md:items-center gap-8">
                 <div className="footer-bottom-reveal flex flex-wrap gap-2">
                   {NAV_LINKS.map((link) => (
-                    <button key={link.id} onClick={() => scrollTo(link.id)} className="px-5 py-2.5 rounded-2xl border border-[#1A1A1A]/10 font-['Inter'] text-[13px] font-medium text-[#1A1A1A]/70 hover:text-[#1A1A1A] hover:border-[#1A1A1A]/25 hover:bg-white/50 transition-all duration-300">
+                    <button key={link.id} onClick={() => scrollTo(link.id)} className="px-5 py-2.5 rounded-2xl border border-[#1A1A1A]/10 text-[13px] font-medium text-[#1A1A1A]/70 hover:text-[#1A1A1A] hover:border-[#1A1A1A]/25 hover:bg-white/50 transition-all duration-300">
                       {link.label}
                     </button>
                   ))}
                 </div>
                 <div className="footer-bottom-reveal flex items-center gap-4">
-                  <span className="font-['Inter'] text-[10px] uppercase tracking-[0.08em] text-[#1A1A1A]/30 mr-1">Follow us</span>
+                  <span className="text-[10px] uppercase tracking-[0.08em] text-[#1A1A1A]/30 mr-1">Follow us</span>
                   {SOCIALS.map((social) => (
                     <a key={social.label} href={social.href} aria-label={social.label} className="w-9 h-9 rounded-xl border border-[#1A1A1A]/10 flex items-center justify-center text-[#1A1A1A]/50 hover:text-[#F26044] hover:border-[#F26044]/30 hover:bg-white/60 transition-all duration-300">
                       <social.icon className="w-4 h-4" />
@@ -200,17 +165,17 @@ export default function Footer() {
               </div>
               <div className="md:col-span-3 flex flex-col gap-6 md:items-end">
                 <div className="footer-bottom-reveal">
-                  <p className="font-['Inter'] text-[9px] uppercase tracking-[0.08em] text-[#1A1A1A]/30 mb-1.5">Contact</p>
-                  <a href="mailto:hello@lobster.agency" className="font-['Inter'] text-[14px] text-[#1A1A1A]/70 hover:text-[#F26044] transition-colors block" style={{ letterSpacing: '-0.02em' }}>hello@lobster.agency</a>
-                  <p className="font-['Inter'] text-[14px] text-[#1A1A1A]/70 mt-0.5" style={{ letterSpacing: '-0.02em' }}>+44 20 7946 0958</p>
+                  <p className="text-[9px] uppercase tracking-[0.08em] text-[#1A1A1A]/30 mb-1.5">Contact</p>
+                  <a href="mailto:hello@lobster.agency" className="text-[14px] text-[#1A1A1A]/70 hover:text-[#F26044] transition-colors block" style={{ letterSpacing: '-0.02em' }}>hello@lobster.agency</a>
+                  <p className="text-[14px] text-[#1A1A1A]/70 mt-0.5" style={{ letterSpacing: '-0.02em' }}>+44 20 7946 0958</p>
                 </div>
                 <div className="footer-bottom-reveal">
-                  <p className="font-['Inter'] text-[9px] uppercase tracking-[0.08em] text-[#1A1A1A]/30 mb-1.5">Address</p>
-                  <p className="font-['Inter'] text-[14px] text-[#1A1A1A]/70" style={{ letterSpacing: '-0.02em' }}>Shoreditch, London<br />EC2A 4NE, UK</p>
+                  <p className="text-[9px] uppercase tracking-[0.08em] text-[#1A1A1A]/30 mb-1.5">Address</p>
+                  <p className="text-[14px] text-[#1A1A1A]/70" style={{ letterSpacing: '-0.02em' }}>Shoreditch, London<br />EC2A 4NE, UK</p>
                 </div>
               </div>
             </div>
-            <div className="footer-bottom-reveal pt-6 border-t border-[#1A1A1A]/[0.06] flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-['Inter'] text-[#1A1A1A]/30">
+            <div className="footer-bottom-reveal pt-6 border-t border-[#1A1A1A]/[0.06] flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-[#1A1A1A]/30">
               <p>&copy; {new Date().getFullYear()} Lobster Agency. All rights reserved.</p>
               <a href="#" className="hover:text-[#1A1A1A]/60 transition-colors">Privacy Policy</a>
             </div>

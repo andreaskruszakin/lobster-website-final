@@ -2,8 +2,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import LobsterWavingSticker from '@/imports/LobsterWavingSticker';
-import LobsterCodingSticker from '@/imports/LobsterCodingSticker';
 
 export default function Hero({ isReady = true }: { isReady?: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -50,25 +48,21 @@ export default function Hero({ isReady = true }: { isReady?: boolean }) {
         <div className="blob-3 absolute top-[50%] left-[50%] w-[25vw] h-[25vw] rounded-full bg-[#D14830]/20 blur-[80px]" />
       </div>
       {/* Stickers */}
-      <div className="hero-sticker hero-sticker-waving absolute z-20 top-[14%] left-[4%] pointer-events-none" style={{ width: 500 * 0.44, height: 385 * 0.44 }}>
-        <div className="relative" style={{ width: 500, height: 385, transform: 'scale(0.44)', transformOrigin: 'top left' }}>
-          <LobsterWavingSticker />
-        </div>
+      <div className="hero-sticker hero-sticker-waving absolute z-20 top-[14%] left-[4%] pointer-events-none" style={{ width: 220 }}>
+        <img src="/Lobster_Final.svg" alt="" className="w-full h-auto" />
       </div>
-      <div className="hero-sticker hero-sticker-coding absolute z-20 bottom-[16%] right-[4%] pointer-events-none" style={{ width: 550 * 0.42, height: 385 * 0.42 }}>
-        <div className="relative" style={{ width: 550, height: 385, transform: 'scale(0.42)', transformOrigin: 'top left' }}>
-          <LobsterCodingSticker />
-        </div>
+      <div className="hero-sticker hero-sticker-coding absolute z-20 bottom-[16%] right-[4%] pointer-events-none" style={{ width: 240 }}>
+        <img src="/Squid_Final.svg" alt="" className="w-full h-auto" />
       </div>
       {/* Top metadata */}
       <div className="relative z-20 pt-24 px-6 md:px-12 flex justify-between items-start">
         <div className="hero-meta">
-          <p className="font-['Inter'] text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/60">Est. 2024</p>
-          <p className="font-['Inter'] text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/60 mt-1">London, UK</p>
+          <p className="text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/60">Est. 2024</p>
+          <p className="text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/60 mt-1">London, UK</p>
         </div>
         <div className="hero-meta text-right">
-          <p className="font-['Inter'] text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/60">Web Development</p>
-          <p className="font-['Inter'] text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/60 mt-1">Creative Agency</p>
+          <p className="text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/60">Web Development</p>
+          <p className="text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/60 mt-1">Creative Agency</p>
         </div>
       </div>
       {/* Main content */}
@@ -76,24 +70,24 @@ export default function Hero({ isReady = true }: { isReady?: boolean }) {
         <div className="w-full flex justify-center overflow-hidden" style={{ perspective: '1000px' }}>
           <div className="flex items-baseline leading-[0.85] select-none">
             {['L','O','B','S','T','E','R'].map((char, i) => (
-              <span key={i} className="hero-char inline-block font-['BN_Rollcall','Anton',sans-serif] text-[20vw] md:text-[18vw] lg:text-[16vw] tracking-[-0.02em] text-[#FDF8F3] will-change-transform uppercase">
+              <span key={i} className="hero-char inline-block font-black text-[20vw] md:text-[18vw] lg:text-[16vw] tracking-[-0.02em] text-[#FDF8F3] will-change-transform uppercase">
                 {char}
               </span>
             ))}
           </div>
         </div>
         <div className="hero-tagline mt-2 md:mt-4 text-center max-w-2xl mx-auto px-4">
-          <h2 className="font-['Inter'] text-lg md:text-2xl font-medium text-[#FDF8F3]/90 leading-snug" style={{ letterSpacing: '-0.02em' }}>
+          <h2 className="text-lg md:text-2xl font-medium text-[#FDF8F3]/90 leading-snug" style={{ letterSpacing: '-0.02em' }}>
             The creative studio that builds <br className="hidden md:inline" />
-            digital experiences <span className="font-['Inter'] font-light italic text-[#FDF8F3]/50 text-[0.85em] uppercase tracking-[-0.04em]">worth talking about.</span>
+            digital experiences <span className="font-light italic text-[#FDF8F3]/50 text-[0.85em] uppercase tracking-[-0.04em]">worth talking about.</span>
           </h2>
         </div>
       </div>
       {/* Bottom bar */}
       <div className="relative z-20 pb-16 px-6 md:px-12 flex justify-end items-end">
         <div className="hero-meta text-right">
-          <p className="font-['Inter'] text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/50">London</p>
-          <p className="font-['Inter'] text-[14px] tabular-nums tracking-[0.04em] text-[#FDF8F3]/80 mt-0.5 uppercase">{time}</p>
+          <p className="text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/50">London</p>
+          <p className="text-[14px] tabular-nums tracking-[0.04em] text-[#FDF8F3]/80 mt-0.5 uppercase">{time}</p>
         </div>
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-8 bg-[#FDF8F3] rounded-t-[2rem]" />

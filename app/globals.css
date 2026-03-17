@@ -1,21 +1,13 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-display: "BN Rollcall", "Anton", sans-serif;
-  --font-body: "Inter", sans-serif;
-}
-
-@font-face {
-  font-family: 'BN Rollcall';
-  src: url('/fonts/BNRollcall.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+  --font-sans: var(--font-rubik), sans-serif;
 }
 
 body {
   background-color: #FDF8F3;
   color: #1A1A1A;
+  font-family: var(--font-rubik), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

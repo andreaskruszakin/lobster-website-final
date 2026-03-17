@@ -45,10 +45,10 @@ function WorkCard({ item, config }: { item: typeof WORK_ITEMS[0]; config: typeof
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 z-10 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
-          <h3 className="font-['BN_Rollcall','Anton',sans-serif] text-2xl md:text-[28px] text-white leading-[0.95] mb-3">{item.title}</h3>
+          <h3 className="font-black text-2xl md:text-[28px] text-white leading-[0.95] mb-3">{item.title}</h3>
           <div className="flex items-center gap-2">
-            <span className="inline-block px-3 py-1 rounded-lg text-white text-[11px] font-['Inter'] font-semibold" style={{ backgroundColor: item.accent, letterSpacing: '-0.02em' }}>{item.client}</span>
-            <span className="font-['Inter'] text-[9px] uppercase tracking-[0.08em] text-white/40">{item.category}</span>
+            <span className="inline-block px-3 py-1 rounded-lg text-white text-[11px] font-semibold" style={{ backgroundColor: item.accent, letterSpacing: '-0.02em' }}>{item.client}</span>
+            <span className="text-[9px] uppercase tracking-[0.08em] text-white/40">{item.category}</span>
           </div>
         </div>
       </div>
@@ -73,12 +73,12 @@ export default function Work() {
     <section id="work" ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#FDF8F3]">
       <div className="max-w-[1400px] mx-auto">
         <div className="work-heading parallax-section-heading mb-10 md:mb-14">
-          <span className="font-['Inter'] text-[10px] uppercase tracking-[0.1em] text-[#F26044] block mb-4">Selected Work</span>
+          <span className="text-[10px] uppercase tracking-[0.1em] text-[#F26044] block mb-4">Selected Work</span>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h2 className="font-['BN_Rollcall','Anton',sans-serif] text-5xl md:text-7xl lg:text-[5.5rem] text-[#1A1A1A] leading-[0.88]">
+            <h2 className="font-black text-5xl md:text-7xl lg:text-[5.5rem] text-[#1A1A1A] leading-[0.88]">
               Projects<span className="inline-block w-[0.13em] h-[0.13em] bg-[#F26044] rounded-[0.03em] ml-[0.06em] align-baseline" />
             </h2>
-            <p className="font-['Inter'] text-base text-[#1A1A1A]/50 max-w-sm leading-relaxed md:pb-2" style={{ letterSpacing: '-0.02em' }}>A few things we&apos;ve built that we&apos;re particularly proud of.</p>
+            <p className="text-base text-[#1A1A1A]/50 max-w-sm leading-relaxed md:pb-2" style={{ letterSpacing: '-0.02em' }}>A few things we&apos;ve built that we&apos;re particularly proud of.</p>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">

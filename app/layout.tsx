@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Rubik } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const rubik = Rubik({
+  subsets: ["latin"],
+  weight: ["400", "900"],
+  variable: "--font-rubik",
+});
 
 export const metadata: Metadata = {
   title: "Lobster — Creative Web Studio",
@@ -12,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${rubik.variable} antialiased`}>
         {children}
       </body>
     </html>

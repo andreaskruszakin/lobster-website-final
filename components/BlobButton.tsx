@@ -64,7 +64,7 @@ export default function BlobButton({
       />
       <span
         ref={textRef}
-        className="relative z-10 font-['Inter'] text-[14px] font-semibold whitespace-nowrap"
+        className="relative z-10 text-[14px] font-semibold whitespace-nowrap"
         style={{ color: textColor, letterSpacing: '-0.02em' }}
       >
         {children}

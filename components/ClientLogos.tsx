@@ -42,8 +42,8 @@ export default function ClientLogos() {
               </svg>
             </div>
             <div className="relative z-10">
-              <h2 className="font-['BN_Rollcall','Anton',sans-serif] text-5xl md:text-7xl lg:text-8xl leading-[0.9] tracking-tight mb-2">
-                proud to have<br />worked <span className="font-['Inter'] italic font-light relative inline-block border-b-2 border-black pb-1 uppercase tracking-[0.08em]">with:</span>
+              <h2 className="font-black text-5xl md:text-7xl lg:text-8xl leading-[0.9] tracking-tight mb-2">
+                proud to have<br />worked <span className="italic font-light relative inline-block border-b-2 border-black pb-1 uppercase tracking-[0.08em]">with:</span>
               </h2>
               <div className="absolute top-[90%] left-[60%] w-48 h-32 hidden lg:block pointer-events-none transform -rotate-12">
                 <ArrowLoop className="w-full h-full text-black drawing-arrow" strokeWidth={5} />
@@ -57,7 +57,7 @@ export default function ClientLogos() {
                 <motion.div className="flex flex-col gap-4 md:gap-6" animate={{ y: '-50%' }} initial={{ y: '0%' }} transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}>
                   {[...LOGOS_LEFT, ...LOGOS_LEFT, ...LOGOS_LEFT].map((logo, index) => (
                     <div key={`left-${index}`} className="aspect-square rounded-[2.5rem] flex items-center justify-center p-8 border border-white/10" style={{ backgroundColor: logo.color, color: logo.textColor }}>
-                      <span className="font-['BN_Rollcall','Anton',sans-serif] text-2xl md:text-3xl text-center uppercase tracking-wider">{logo.name}</span>
+                      <span className="font-black text-2xl md:text-3xl text-center uppercase tracking-wider">{logo.name}</span>
                     </div>
                   ))}
                 </motion.div>
@@ -66,7 +66,7 @@ export default function ClientLogos() {
                 <motion.div className="flex flex-col gap-4 md:gap-6" animate={{ y: '0%' }} initial={{ y: '-50%' }} transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}>
                   {[...LOGOS_RIGHT, ...LOGOS_RIGHT, ...LOGOS_RIGHT].map((logo, index) => (
                     <div key={`right-${index}`} className="aspect-square rounded-[2.5rem] flex items-center justify-center p-8 border border-white/10" style={{ backgroundColor: logo.color, color: logo.textColor }}>
-                      <span className="font-['BN_Rollcall','Anton',sans-serif] text-2xl md:text-3xl text-center uppercase tracking-wider">{logo.name}</span>
+                      <span className="font-black text-2xl md:text-3xl text-center uppercase tracking-wider">{logo.name}</span>
                     </div>
                   ))}
                 </motion.div>

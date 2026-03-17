@@ -1,22 +1,6 @@
 'use client';
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
-import svgPaths from '@/imports/svg-2yo5qb1oi5';
-
-function NavLogo({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 1182.92 167.814" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d={svgPaths.pc9f1500} fill="currentColor" fillRule="evenodd" clipRule="evenodd" />
-      <path d={svgPaths.p180b7340} fill="currentColor" />
-      <path d={svgPaths.p1d91f111} fill="currentColor" />
-      <path d={svgPaths.p26957c80} fill="currentColor" />
-      <path d={svgPaths.p22223600} fill="currentColor" />
-      <path d={svgPaths.p32616c40} fill="currentColor" />
-      <path d={svgPaths.p1b198880} fill="currentColor" />
-      <path d={svgPaths.p14cae540} fill="currentColor" />
-    </svg>
-  );
-}
 
 const SERVICE_ITEMS = [
   { label: 'Digital Experience', desc: 'React, Next.js, Motion' },
@@ -56,7 +40,7 @@ export default function Navbar() {
         }`}
       >
         <div className="pl-4 pr-2 flex items-center">
-          <NavLogo className="h-4 w-auto text-[#F26044]" />
+          <img src="/Logo_Final.svg" alt="Lobster" className="h-4 w-auto" />
         </div>
         <div className="hidden md:block w-px h-6 bg-white/10 mx-1" />
         <div className="hidden md:flex items-center gap-0.5 px-1">
@@ -64,7 +48,7 @@ export default function Navbar() {
           <div className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
             <button
               onClick={() => scrollTo('services')}
-              className="relative px-4 py-2 rounded-xl font-['Inter'] text-[13px] font-medium text-[#FDF8F3]/70 hover:text-[#FDF8F3] hover:bg-white/[0.08] transition-all duration-300 flex items-center gap-1"
+              className="relative px-4 py-2 rounded-xl text-[13px] font-medium text-[#FDF8F3]/70 hover:text-[#FDF8F3] hover:bg-white/[0.08] transition-all duration-300 flex items-center gap-1"
             >
               Services
               <svg className="w-3 h-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -86,8 +70,8 @@ export default function Navbar() {
                       onClick={() => scrollTo('services')}
                       className="w-full text-left px-4 py-3 rounded-xl hover:bg-white/[0.08] transition-all group"
                     >
-                      <p className="font-['Inter'] text-[13px] font-medium text-[#FDF8F3]/80 group-hover:text-[#FDF8F3]">{item.label}</p>
-                      <p className="font-['Inter'] text-[11px] text-[#FDF8F3]/30 mt-0.5">{item.desc}</p>
+                      <p className="text-[13px] font-medium text-[#FDF8F3]/80 group-hover:text-[#FDF8F3]">{item.label}</p>
+                      <p className="text-[11px] text-[#FDF8F3]/30 mt-0.5">{item.desc}</p>
                     </button>
                   ))}
                 </motion.div>
@@ -102,7 +86,7 @@ export default function Navbar() {
             <button
               key={item.id}
               onClick={() => scrollTo(item.id)}
-              className="relative px-4 py-2 rounded-xl font-['Inter'] text-[13px] font-medium text-[#FDF8F3]/70 hover:text-[#FDF8F3] hover:bg-white/[0.08] transition-all duration-300"
+              className="relative px-4 py-2 rounded-xl text-[13px] font-medium text-[#FDF8F3]/70 hover:text-[#FDF8F3] hover:bg-white/[0.08] transition-all duration-300"
             >
               {item.label}
             </button>
@@ -111,7 +95,7 @@ export default function Navbar() {
 
         <button
           onClick={() => scrollTo('contact')}
-          className="ml-1 bg-[#F26044] text-white px-5 py-2.5 rounded-xl font-['Inter'] text-[13px] font-semibold hover:bg-[#ff7d63] active:scale-95 transition-all duration-300 flex items-center gap-2"
+          className="ml-1 bg-[#F26044] text-white px-5 py-2.5 rounded-xl text-[13px] font-semibold hover:bg-[#ff7d63] active:scale-95 transition-all duration-300 flex items-center gap-2"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white/60 opacity-75" />

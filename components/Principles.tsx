@@ -28,12 +28,12 @@ export default function Principles() {
     <section id="principles" ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#FDF8F3]">
       <div className="max-w-[1400px] mx-auto">
         <div className="principles-heading parallax-section-heading mb-14 md:mb-20">
-          <span className="font-['Inter'] text-[10px] uppercase tracking-[0.1em] text-[#F26044] block mb-4">How We Work</span>
+          <span className="text-[10px] uppercase tracking-[0.1em] text-[#F26044] block mb-4">How We Work</span>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h2 className="font-['BN_Rollcall','Anton',sans-serif] text-5xl md:text-7xl text-[#1A1A1A] leading-[0.9]">
+            <h2 className="font-black text-5xl md:text-7xl text-[#1A1A1A] leading-[0.9]">
               We don&apos;t mess<br />around<span className="inline-block w-[0.13em] h-[0.13em] bg-[#F26044] rounded-[0.03em] ml-[0.06em] align-baseline" />
             </h2>
-            <p className="font-['Inter'] text-base text-[#1A1A1A]/50 max-w-sm leading-relaxed md:pb-2" style={{ letterSpacing: '-0.02em' }}>
+            <p className="text-base text-[#1A1A1A]/50 max-w-sm leading-relaxed md:pb-2" style={{ letterSpacing: '-0.02em' }}>
               Five non-negotiables that define how we operate and what you can expect from us.
             </p>
           </div>
@@ -63,10 +63,10 @@ function PrincipleCard({ principle, size }: { principle: typeof PRINCIPLES[0]; s
       >
         <div className="flex flex-col md:flex-row items-center justify-between p-8 md:p-10 lg:p-12 gap-6 md:gap-12">
           <div className="flex items-center gap-6 md:gap-10">
-            <span className="principle-num font-['Inter'] text-[11px] uppercase tracking-[0.1em] opacity-40 shrink-0">{principle.num}</span>
-            <h3 className="font-['BN_Rollcall','Anton',sans-serif] text-4xl md:text-5xl lg:text-6xl leading-[0.9] tracking-tight">{principle.title.replace('\n', ' ')}</h3>
+            <span className="principle-num text-[11px] uppercase tracking-[0.1em] opacity-40 shrink-0">{principle.num}</span>
+            <h3 className="font-black text-4xl md:text-5xl lg:text-6xl leading-[0.9] tracking-tight">{principle.title.replace('\n', ' ')}</h3>
           </div>
-          <p className="font-['Inter'] text-[15px] md:text-base leading-relaxed opacity-60 max-w-md md:text-right shrink-0" style={{ letterSpacing: '-0.02em' }}>{principle.desc}</p>
+          <p className="text-[15px] md:text-base leading-relaxed opacity-60 max-w-md md:text-right shrink-0" style={{ letterSpacing: '-0.02em' }}>{principle.desc}</p>
         </div>
         <div className="absolute -bottom-6 -right-6 w-28 h-28 rounded-full opacity-[0.08] pointer-events-none" style={{ backgroundColor: principle.textColor }} />
       </div>
@@ -80,16 +80,16 @@ function PrincipleCard({ principle, size }: { principle: typeof PRINCIPLES[0]; s
     >
       <div className="relative z-10 flex flex-col justify-between h-full p-8 md:p-10">
         <div className="flex items-start justify-between">
-          <span className="principle-num font-['Inter'] text-[11px] uppercase tracking-[0.1em] opacity-40">{principle.num}</span>
+          <span className="principle-num text-[11px] uppercase tracking-[0.1em] opacity-40">{principle.num}</span>
           <div className="w-3 h-3 rounded-sm opacity-30 group-hover:opacity-60 group-hover:scale-125 transition-all duration-300" style={{ backgroundColor: principle.textColor }} />
         </div>
         <div>
-          <h3 className="font-['BN_Rollcall','Anton',sans-serif] text-4xl md:text-5xl lg:text-[3.5rem] leading-[0.88] tracking-tight mb-4 whitespace-pre-line">{principle.title}</h3>
+          <h3 className="font-black text-4xl md:text-5xl lg:text-[3.5rem] leading-[0.88] tracking-tight mb-4 whitespace-pre-line">{principle.title}</h3>
           <div className="w-10 h-[2px] mb-4 opacity-25 group-hover:w-16 transition-all duration-500" style={{ backgroundColor: principle.textColor }} />
-          <p className="font-['Inter'] text-[14px] leading-relaxed opacity-50 max-w-[280px] group-hover:opacity-70 transition-opacity duration-400" style={{ letterSpacing: '-0.02em' }}>{principle.desc}</p>
+          <p className="text-[14px] leading-relaxed opacity-50 max-w-[280px] group-hover:opacity-70 transition-opacity duration-400" style={{ letterSpacing: '-0.02em' }}>{principle.desc}</p>
         </div>
       </div>
-      <div className="absolute -top-4 -right-4 font-['BN_Rollcall','Anton',sans-serif] text-[12rem] md:text-[16rem] leading-none opacity-[0.04] pointer-events-none select-none" style={{ color: principle.textColor }}>{principle.num}</div>
+      <div className="absolute -top-4 -right-4 font-black text-[12rem] md:text-[16rem] leading-none opacity-[0.04] pointer-events-none select-none" style={{ color: principle.textColor }}>{principle.num}</div>
     </div>
   );
 }

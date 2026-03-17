@@ -4,7 +4,6 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, MapPin, Clock } from 'lucide-react';
-import LobsterCallingSticker from '@/imports/LobsterCallingSticker';
 
 export default function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -25,18 +24,16 @@ export default function Contact() {
           {/* Left column */}
           <div className="lg:col-span-5 flex flex-col">
             <div className="parallax-section-heading mb-10 md:mb-14">
-              <span className="contact-reveal font-['Inter'] text-[10px] uppercase tracking-[0.1em] text-[#F26044] block mb-4">Get In Touch</span>
-              <h2 className="contact-reveal font-['BN_Rollcall','Anton',sans-serif] text-6xl md:text-[5.5rem] lg:text-[6.5rem] text-[#1A1A1A] leading-[0.85]">
+              <span className="contact-reveal text-[10px] uppercase tracking-[0.1em] text-[#F26044] block mb-4">Get In Touch</span>
+              <h2 className="contact-reveal font-black text-6xl md:text-[5.5rem] lg:text-[6.5rem] text-[#1A1A1A] leading-[0.85]">
                 Let&apos;s<br />Build<span className="inline-block w-[0.13em] h-[0.13em] bg-[#F26044] rounded-[0.03em] ml-[0.06em] align-baseline" />
               </h2>
             </div>
-            <p className="contact-reveal font-['Inter'] text-base text-[#1A1A1A]/50 max-w-sm leading-relaxed mb-10" style={{ letterSpacing: '-0.02em' }}>
+            <p className="contact-reveal text-base text-[#1A1A1A]/50 max-w-sm leading-relaxed mb-10" style={{ letterSpacing: '-0.02em' }}>
               Tell us about your project. We&apos;ll get back within 24 hours — no gatekeepers, no runaround.
             </p>
-            <div className="contact-sticker hidden lg:block mb-10 overflow-hidden" style={{ width: 190, height: 163 }}>
-              <div className="relative origin-top-left" style={{ width: 500, height: 430, transform: 'scale(0.38)' }}>
-                <LobsterCallingSticker />
-              </div>
+            <div className="contact-sticker hidden lg:block mb-10" style={{ width: 190 }}>
+              <img src="/Lobster_Final.svg" alt="" className="w-full h-auto" />
             </div>
             <div className="contact-reveal flex flex-col gap-6 mt-auto">
               <div className="w-full h-px bg-[#1A1A1A]/[0.06]" />
@@ -50,10 +47,10 @@ export default function Contact() {
                     <Icon className="w-4 h-4 text-[#F26044]" />
                   </div>
                   <div>
-                    <p className="font-['Inter'] text-[9px] uppercase tracking-[0.08em] text-[#1A1A1A]/30 mb-1">{label}</p>
+                    <p className="text-[9px] uppercase tracking-[0.08em] text-[#1A1A1A]/30 mb-1">{label}</p>
                     {href
-                      ? <a href={href} className="font-['Inter'] text-[15px] text-[#1A1A1A] hover:text-[#F26044] transition-colors" style={{ letterSpacing: '-0.02em' }}>{value}</a>
-                      : <p className="font-['Inter'] text-[15px] text-[#1A1A1A]" style={{ letterSpacing: '-0.02em' }}>{value}</p>
+                      ? <a href={href} className="text-[15px] text-[#1A1A1A] hover:text-[#F26044] transition-colors" style={{ letterSpacing: '-0.02em' }}>{value}</a>
+                      : <p className="text-[15px] text-[#1A1A1A]" style={{ letterSpacing: '-0.02em' }}>{value}</p>
                     }
                   </div>
                 </div>
@@ -70,7 +67,7 @@ export default function Contact() {
                   <button
                     key={m}
                     onClick={() => setMode(m)}
-                    className={`px-5 py-2.5 rounded-[10px] font-['Inter'] text-[13px] font-semibold transition-all duration-300 ${mode === m ? 'bg-white shadow-sm text-[#1A1A1A]' : 'text-[#1A1A1A]/40 hover:text-[#1A1A1A]/60'}`}
+                    className={`px-5 py-2.5 rounded-[10px] text-[13px] font-semibold transition-all duration-300 ${mode === m ? 'bg-white shadow-sm text-[#1A1A1A]' : 'text-[#1A1A1A]/40 hover:text-[#1A1A1A]/60'}`}
                   >
                     {m === 'project' ? 'Start a project' : 'Book a call'}
                   </button>
@@ -85,41 +82,41 @@ export default function Contact() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <h3 className="font-['BN_Rollcall','Anton',sans-serif] text-2xl text-[#1A1A1A]">Message sent!</h3>
-                    <p className="font-['Inter'] text-[14px] text-[#1A1A1A]/50 text-center max-w-xs" style={{ letterSpacing: '-0.02em' }}>We&apos;ll get back to you within 24 hours.</p>
+                    <h3 className="font-black text-2xl text-[#1A1A1A]">Message sent!</h3>
+                    <p className="text-[14px] text-[#1A1A1A]/50 text-center max-w-xs" style={{ letterSpacing: '-0.02em' }}>We&apos;ll get back to you within 24 hours.</p>
                   </div>
                 ) : (
                   <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
                     <div className="mb-2">
-                      <h3 className="font-['BN_Rollcall','Anton',sans-serif] text-2xl text-[#1A1A1A] mb-1">Start a project</h3>
-                      <p className="font-['Inter'] text-[13px] text-[#1A1A1A]/40" style={{ letterSpacing: '-0.02em' }}>Fill in the details and we&apos;ll be in touch.</p>
+                      <h3 className="font-black text-2xl text-[#1A1A1A] mb-1">Start a project</h3>
+                      <p className="text-[13px] text-[#1A1A1A]/40" style={{ letterSpacing: '-0.02em' }}>Fill in the details and we&apos;ll be in touch.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       {[{ id: 'name', label: 'Name', type: 'text', placeholder: 'Jane Doe' }, { id: 'email', label: 'Email', type: 'email', placeholder: 'jane@company.com' }].map(f => (
                         <div key={f.id} className="flex flex-col gap-2">
-                          <label htmlFor={f.id} className="font-['Inter'] text-[10px] uppercase tracking-[0.08em] text-[#1A1A1A]/40 ml-1">{f.label}</label>
-                          <input type={f.type} id={f.id} required className="w-full bg-[#F7F5F2] border border-transparent rounded-xl px-4 py-3.5 text-[#1A1A1A] placeholder:text-[#1A1A1A]/20 focus:ring-2 focus:ring-[#F26044]/30 focus:border-[#F26044]/20 focus:bg-white transition-all font-['Inter'] text-[14px] outline-none" placeholder={f.placeholder} />
+                          <label htmlFor={f.id} className="text-[10px] uppercase tracking-[0.08em] text-[#1A1A1A]/40 ml-1">{f.label}</label>
+                          <input type={f.type} id={f.id} required className="w-full bg-[#F7F5F2] border border-transparent rounded-xl px-4 py-3.5 text-[#1A1A1A] placeholder:text-[#1A1A1A]/20 focus:ring-2 focus:ring-[#F26044]/30 focus:border-[#F26044]/20 focus:bg-white transition-all text-[14px] outline-none" placeholder={f.placeholder} />
                         </div>
                       ))}
                     </div>
                     <div className="flex flex-col gap-2">
-                      <label className="font-['Inter'] text-[10px] uppercase tracking-[0.08em] text-[#1A1A1A]/40 ml-1">Budget Range</label>
+                      <label className="text-[10px] uppercase tracking-[0.08em] text-[#1A1A1A]/40 ml-1">Budget Range</label>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                         {['< £10k', '£10–25k', '£25–50k', '£50k+'].map((range) => (
                           <label key={range} className="relative flex items-center justify-center px-3 py-2.5 rounded-xl bg-[#F7F5F2] border border-transparent cursor-pointer hover:border-[#F26044]/20 hover:bg-[#F26044]/[0.04] transition-all">
                             <input type="radio" name="budget" value={range} className="sr-only peer" />
-                            <span className="font-['Inter'] text-[13px] text-[#1A1A1A]/50 peer-checked:text-[#F26044] peer-checked:font-medium transition-colors" style={{ letterSpacing: '-0.02em' }}>{range}</span>
+                            <span className="text-[13px] text-[#1A1A1A]/50 peer-checked:text-[#F26044] peer-checked:font-medium transition-colors" style={{ letterSpacing: '-0.02em' }}>{range}</span>
                             <div className="absolute inset-0 rounded-xl border-2 border-transparent peer-checked:border-[#F26044]/30 pointer-events-none transition-all" />
                           </label>
                         ))}
                       </div>
                     </div>
                     <div className="flex flex-col gap-2">
-                      <label htmlFor="message" className="font-['Inter'] text-[10px] uppercase tracking-[0.08em] text-[#1A1A1A]/40 ml-1">Message</label>
-                      <textarea id="message" rows={4} required className="w-full bg-[#F7F5F2] border border-transparent rounded-xl px-4 py-3.5 text-[#1A1A1A] placeholder:text-[#1A1A1A]/20 focus:ring-2 focus:ring-[#F26044]/30 focus:border-[#F26044]/20 focus:bg-white transition-all font-['Inter'] text-[14px] resize-none outline-none" placeholder="Tell us about your project..." />
+                      <label htmlFor="message" className="text-[10px] uppercase tracking-[0.08em] text-[#1A1A1A]/40 ml-1">Message</label>
+                      <textarea id="message" rows={4} required className="w-full bg-[#F7F5F2] border border-transparent rounded-xl px-4 py-3.5 text-[#1A1A1A] placeholder:text-[#1A1A1A]/20 focus:ring-2 focus:ring-[#F26044]/30 focus:border-[#F26044]/20 focus:bg-white transition-all text-[14px] resize-none outline-none" placeholder="Tell us about your project..." />
                     </div>
                     <div className="pt-2">
-                      <button type="submit" className="bg-[#F26044] text-white px-8 py-3.5 rounded-xl font-['Inter'] text-[14px] font-semibold hover:bg-[#ff7d63] active:scale-95 transition-all duration-300">
+                      <button type="submit" className="bg-[#F26044] text-white px-8 py-3.5 rounded-xl text-[14px] font-semibold hover:bg-[#ff7d63] active:scale-95 transition-all duration-300">
                         Send Request →
                       </button>
                     </div>
@@ -128,8 +125,8 @@ export default function Contact() {
               ) : (
                 <div className="flex flex-col gap-4">
                   <div className="mb-2">
-                    <h3 className="font-['BN_Rollcall','Anton',sans-serif] text-2xl text-[#1A1A1A] mb-1">Book a call</h3>
-                    <p className="font-['Inter'] text-[13px] text-[#1A1A1A]/40" style={{ letterSpacing: '-0.02em' }}>Pick a time that works for you — 30 min discovery call.</p>
+                    <h3 className="font-black text-2xl text-[#1A1A1A] mb-1">Book a call</h3>
+                    <p className="text-[13px] text-[#1A1A1A]/40" style={{ letterSpacing: '-0.02em' }}>Pick a time that works for you — 30 min discovery call.</p>
                   </div>
                   <div className="w-full rounded-2xl overflow-hidden border border-[#1A1A1A]/[0.06]" style={{ minHeight: 480 }}>
                     <iframe
