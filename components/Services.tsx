@@ -81,6 +81,9 @@ export default function Services() {
       <div className="max-w-[1400px] mx-auto">
         <div className="services-heading parallax-section-heading mb-16 md:mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
+            <div className="mb-4">
+              <img src="/Lighthouse_Final.svg" alt="" style={{ width: 52, height: 'auto' }} />
+            </div>
             <span className="text-[10px] uppercase tracking-[0.1em] text-[#FF4F40] block mb-3">What We Do</span>
             <h2 className="font-black text-5xl md:text-7xl text-[#1E1A2E] leading-[0.9]">
               Services<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />

@@ -73,6 +73,9 @@ export default function Work() {
     <section id="work" ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#FDF8F3]">
       <div className="max-w-[1400px] mx-auto">
         <div className="work-heading parallax-section-heading mb-10 md:mb-14">
+          <div className="mb-4">
+            <img src="/Folder_Final.svg" alt="" style={{ width: 60, height: 'auto' }} />
+          </div>
           <span className="text-[10px] uppercase tracking-[0.1em] text-[#FF4F40] block mb-4">Selected Work</span>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <h2 className="font-black text-5xl md:text-7xl lg:text-[5.5rem] text-[#1E1A2E] leading-[0.88]">

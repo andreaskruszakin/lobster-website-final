@@ -7,7 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 const STEPS = [
   { num: '01', title: 'Discovery', description: 'You tell us what you need. We ask the right questions and sketch a plan. No fluff, just clarity.' },
   { num: '02', title: 'Build', description: 'All rolled into one. Covers all standups, all design and development. We like to get something working into your hands.' },
-  { num: '04', title: 'Monitor', description: "Project KPIs monitored and dashboarded to measure success. Comes as standard with all projects." },
+  { num: '03', title: 'Monitor', description: "Project KPIs monitored and dashboarded to measure success. Comes as standard with all projects." },
 ];
 
 export default function Process() {
@@ -23,9 +23,13 @@ export default function Process() {
   return (
     <section id="process" ref={containerRef} className="px-6 md:px-12 pb-20 md:pb-28 bg-[#FDF8F3]">
       <div className="max-w-[1400px] mx-auto">
-        {/* Illustration floats above card */}
-        <div className="process-illus mb-4 pl-2">
-          <img src="/Server_Final.svg" alt="" style={{ width: 64, height: 'auto' }} />
+        {/* Section heading */}
+        <div className="process-illus mb-8 parallax-section-heading">
+          <img src="/Server_Final.svg" alt="" style={{ width: 60, height: 'auto' }} className="mb-4" />
+          <span className="text-[10px] uppercase tracking-[0.1em] text-[#FF4F40] block mb-4">How It Works</span>
+          <h2 className="font-black text-5xl md:text-7xl text-[#1E1A2E] leading-[0.9]">
+            The Process<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
+          </h2>
         </div>
 
         {/* Card */}
