@@ -96,12 +96,12 @@ export default function Hero({ isReady = true }: { isReady?: boolean }) {
       {/* Top metadata */}
       <div className="relative z-20 pt-24 px-6 md:px-14 flex justify-between items-start">
         <div className="hero-meta">
-          <p className="text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/55">Est. 2024</p>
-          <p className="text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/55 mt-1">London, UK</p>
+          <p className="text-[8px] uppercase tracking-[0.08em] text-[#FDF8F3]/55">Est. 2024</p>
+          <p className="text-[8px] uppercase tracking-[0.08em] text-[#FDF8F3]/55 mt-1">London, UK</p>
         </div>
         <div className="hero-meta text-right">
-          <p className="text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/55">Web Development</p>
-          <p className="text-[10px] uppercase tracking-[0.08em] text-[#FDF8F3]/55 mt-1">Creative Agency</p>
+          <p className="text-[8px] uppercase tracking-[0.08em] text-[#FDF8F3]/55">Web Development</p>
+          <p className="text-[8px] uppercase tracking-[0.08em] text-[#FDF8F3]/55 mt-1">Creative Agency</p>
         </div>
       </div>
 

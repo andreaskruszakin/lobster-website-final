@@ -1,40 +1,48 @@
 'use client';
 import React from 'react';
 
-const ROW_1 = ['ANWB', 'KFC', 'Getir', 'Oxxio', 'Swapfiets', 'Netflix', 'HEMA', 'Ace & Tate'];
-const ROW_2 = ['LaunchPad', 'FinFlow', 'TalentBridge', 'Altoe', 'ANWB', 'KFC', 'Getir', 'Swapfiets'];
+// Add more logo entries here as { src, name } when you have the files.
+// Entries without src fall back to a text pill.
+const LOGOS: { name: string; src?: string }[] = [
+  { name: 'Hotpoint', src: '/Hotpoint.png' },
+  { name: 'Indesit', src: '/indesit.png' },
+  { name: 'Whirlpool', src: '/whirlpool.png' },
+  { name: 'Hotpoint', src: '/Hotpoint.png' },
+  { name: 'Indesit', src: '/indesit.png' },
+  { name: 'Whirlpool', src: '/whirlpool.png' },
+];
 
-function MarqueeRow({ items, reverse = false }: { items: string[]; reverse?: boolean }) {
-  const doubled = [...items, ...items];
-  const cls = reverse ? 'animate-marquee-slow' : 'animate-marquee';
-  const dir = reverse ? 'reverse' : 'normal';
+function LogoItem({ logo }: { logo: typeof LOGOS[0] }) {
   return (
-    <div className="relative flex overflow-hidden">
-      <div className={`flex shrink-0 gap-3 ${cls}`} style={{ animationDirection: dir }}>
-        {doubled.map((name, i) => (
-          <div key={i} className="shrink-0 px-5 py-2.5 rounded-full border border-[#1E1A2E]/[0.08] bg-white/70">
-            <span className="font-semibold text-[13px] text-[#1E1A2E]/50 whitespace-nowrap tracking-[-0.01em]">{name}</span>
-          </div>
-        ))}
-      </div>
-      <div className={`flex shrink-0 gap-3 ${cls}`} style={{ animationDirection: dir }} aria-hidden>
-        {doubled.map((name, i) => (
-          <div key={i} className="shrink-0 px-5 py-2.5 rounded-full border border-[#1E1A2E]/[0.08] bg-white/70">
-            <span className="font-semibold text-[13px] text-[#1E1A2E]/50 whitespace-nowrap tracking-[-0.01em]">{name}</span>
-          </div>
-        ))}
-      </div>
+    <div className="shrink-0 flex items-center justify-center px-8 py-4 rounded-2xl border border-[#1E1A2E]/[0.07] bg-white/80" style={{ minWidth: 140, height: 64 }}>
+      {logo.src ? (
+        <img
+          src={logo.src}
+          alt={logo.name}
+          className="max-h-full w-auto object-contain"
+          style={{ maxHeight: 30, filter: 'grayscale(1)', opacity: 0.55 }}
+        />
+      ) : (
+        <span className="font-semibold text-[13px] text-[#1E1A2E]/45 whitespace-nowrap tracking-[-0.01em]">{logo.name}</span>
+      )}
     </div>
   );
 }
 
 export default function ClientLogos() {
+  // Triple the list so the seamless loop works even with a short list
+  const items = [...LOGOS, ...LOGOS, ...LOGOS];
+
   return (
-    <section className="py-12 bg-[#FDF8F3] overflow-hidden">
+    <section className="py-10 bg-[#FDF8F3] overflow-hidden">
       <p className="text-center text-[10px] uppercase tracking-[0.14em] text-[#1E1A2E]/30 mb-6">Trusted by</p>
-      <div className="space-y-3">
-        <MarqueeRow items={ROW_1} />
-        <MarqueeRow items={ROW_2} reverse />
+      <div className="relative flex overflow-hidden">
+        <div className="flex shrink-0 gap-4 animate-marquee">
+          {items.map((logo, i) => <LogoItem key={i} logo={logo} />)}
+        </div>
+        <div className="flex shrink-0 gap-4 animate-marquee" aria-hidden>
+          {items.map((logo, i) => <LogoItem key={i} logo={logo} />)}
+        </div>
       </div>
     </section>
   );
