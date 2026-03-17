@@ -44,8 +44,11 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           <img src="/Lobster_Final.svg" alt="Lobster" className="lobster-illustration w-full h-auto" />
         </div>
         <div className="overflow-hidden flex items-baseline">
-          {['L','o','b','s','t','e','r'].map((char, i) => (
-            <span key={i} className="preloader-char inline-block font-black text-5xl md:text-7xl tracking-[0.04em] text-[#FDF8F3]">{char}</span>
+          {['L','O','B','S','T','E','R'].map((char, i) => (
+            <span key={i} className="preloader-char inline-block text-5xl md:text-7xl text-[#FDF8F3]"
+              style={{ fontFamily: "'BN Sonic', sans-serif", fontWeight: 400, letterSpacing: '0.02em' }}>
+              {char}
+            </span>
           ))}
         </div>
         <p className="preloader-tagline text-[10px] uppercase tracking-[0.1em] text-[#FDF8F3]/30">Creative Web Studio</p>

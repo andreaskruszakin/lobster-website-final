@@ -85,6 +85,7 @@ export default function HomePage() {
         <Work />
         <Process />
         <Testimonials />
+        <ClientLogos />
         <Contact />
       </main>
       <Footer />

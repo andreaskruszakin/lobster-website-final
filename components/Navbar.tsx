@@ -40,7 +40,7 @@ export default function Navbar() {
         }`}
       >
         <div className="pl-4 pr-2 flex items-center">
-          <img src="/Logo_Final.svg" alt="Lobster" className="h-4 w-auto" />
+          <img src="/Logo_Final.svg" alt="Lobster" className="h-6 w-auto" />
         </div>
         <div className="hidden md:block w-px h-6 bg-white/10 mx-1" />
         <div className="hidden md:flex items-center gap-0.5 px-1">
