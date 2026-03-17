@@ -51,7 +51,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
             </span>
           ))}
         </div>
-        <p className="preloader-tagline text-[10px] uppercase tracking-[0.1em] text-[#FDF8F3]/30">Creative Web Studio</p>
+        <p className="preloader-tagline text-[10px] uppercase tracking-[0.1em] text-[#FDF8F3]/30 -mt-2">Creative Web Studio</p>
         <div className="w-48 md:w-64 mt-4">
           <div className="h-[1px] bg-[#FDF8F3]/10 rounded-full overflow-hidden">
             <div className="preloader-bar-fill h-full bg-[#FF4F40] rounded-full" />
