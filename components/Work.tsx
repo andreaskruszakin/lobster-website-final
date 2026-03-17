@@ -7,9 +7,9 @@ import BlobButton from './BlobButton';
 
 const WORK_ITEMS = [
   { id: 1, title: 'Fashion E-Commerce', client: 'Susi Mob', category: 'Web App', image: '/images/4cd0e87280f410819433872a8b3967fb268b1694.png', accent: '#FF4F40' },
-  { id: 2, title: 'Craftwork Design', client: 'Craftwork', category: 'Branding', image: '/images/f2ef28fc0f4b5766c42c1fe15af0d3df07c563ea.png', accent: '#CDD6F4' },
-  { id: 3, title: 'D Series Portfolio', client: 'Arpit Brandings', category: 'Web Design', image: '/images/cb81fb2be560e5f31e2169eedc19546972b0afe6.png', accent: '#1E1E2E' },
-  { id: 4, title: 'Tablet Experience', client: 'Craftwork', category: 'Product Design', image: '/images/1fb5836b62a9ad79be882abfec8d58b8fee2fdec.png', accent: '#CDD6F4' },
+  { id: 2, title: 'Craftwork Design', client: 'Craftwork', category: 'Branding', image: '/images/f2ef28fc0f4b5766c42c1fe15af0d3df07c563ea.png', accent: '#B9B0E8' },
+  { id: 3, title: 'D Series Portfolio', client: 'Arpit Brandings', category: 'Web Design', image: '/images/cb81fb2be560e5f31e2169eedc19546972b0afe6.png', accent: '#1E1A2E' },
+  { id: 4, title: 'Tablet Experience', client: 'Craftwork', category: 'Product Design', image: '/images/1fb5836b62a9ad79be882abfec8d58b8fee2fdec.png', accent: '#B9B0E8' },
 ];
 const CARD_CONFIGS = [
   { height: 'h-[420px] md:h-[500px]', offset: 'md:mt-12', rotation: 'md:[rotate:-1.5deg] hover:[rotate:0deg]' },
@@ -28,7 +28,7 @@ function WorkCard({ item, config }: { item: typeof WORK_ITEMS[0]; config: typeof
     <div className={`work-card ${config.offset}`}>
       <div ref={cardRef} onMouseEnter={handleEnter} onMouseLeave={handleLeave}
         className={`group relative ${config.height} cursor-pointer transition-all duration-500 ${config.rotation}`}
-        style={{ border: '1px solid rgba(26,26,26,0.06)', borderRadius: 28 }}
+        style={{ border: '1px solid rgba(30,26,46,0.06)', borderRadius: 28 }}
       >
         <div className="absolute inset-0 overflow-hidden" style={{ borderRadius: 28, WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}>
           <div ref={imgWrapperRef} className="absolute inset-[-8%] w-[116%] h-[116%] work-parallax-img">

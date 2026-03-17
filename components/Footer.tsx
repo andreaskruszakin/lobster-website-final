@@ -52,7 +52,7 @@ export default function Footer() {
             {/* Main row: tagline + pills | email */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-10">
               <div>
-                <p className="text-white/75 text-[15px] leading-relaxed mb-7" style={{ letterSpacing: '-0.01em' }}>
+                <p className="text-white/75 text-[15px] leading-relaxed mb-7" style={{ letterSpacing: '-0.02em' }}>
                   The agency that enjoys solving problems
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -60,7 +60,7 @@ export default function Footer() {
                     <button
                       key={pill}
                       onClick={() => scrollTo('services')}
-                      className="px-4 py-1.5 rounded-full border border-white/35 text-white/75 text-[13px] font-medium hover:bg-white/15 hover:border-white/50 transition-all duration-200"
+                      className="px-4 py-1.5 rounded-xl border border-white/35 text-white/75 text-[13px] font-medium hover:bg-white/15 hover:border-white/50 transition-all duration-200"
                     >
                       {pill}
                     </button>
@@ -71,9 +71,9 @@ export default function Footer() {
                 <a
                   href="mailto:hello@lobster.digital"
                   className="text-white/75 text-[15px] hover:text-white transition-colors duration-200"
-                  style={{ letterSpacing: '-0.01em' }}
+                  style={{ letterSpacing: '-0.02em' }}
                 >
-                  hello@lobster.digital
+                  hello@lobster.agency
                 </a>
               </div>
             </div>
