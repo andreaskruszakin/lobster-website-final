@@ -1,16 +1,15 @@
 'use client';
 import React, { useRef } from 'react';
-import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const PRINCIPLES = [
-  { num: '01', title: 'Bold by\nDefault', desc: 'We make decisions. We take positions. No mealy-mouthed hedging — just clear, confident work.', color: '#FF4F40', textColor: '#FDF8F3', rotate: -1.5 },
-  { num: '02', title: 'Experts\nOnly', desc: 'Talk to the builders, not account managers. Senior engineers, zero layers of bureaucracy.', color: '#1E1A2E', textColor: '#FDF8F3', rotate: 1 },
-  { num: '03', title: 'Ship >\nSlides', desc: 'We ship production code, not pitch decks. Results over presentations, always.', color: '#FFC4A3', textColor: '#1E1A2E', rotate: -0.5 },
-  { num: '04', title: 'Prove\nit Works', desc: 'We think before we build. Expert consultancy baked into every project we take on.', color: '#C4C3E0', textColor: '#1E1A2E', rotate: 1.5 },
-  { num: '05', title: 'No Nonsense', desc: 'Clear communication, no jargon. We speak human — always. No exceptions.', color: '#1E1A2E', textColor: '#FDF8F3', rotate: -0.8 },
+  { num: '01', title: 'Bold by\nDefault',    desc: 'We make decisions. We take positions. No mealy-mouthed hedging — just clear, confident work.', color: '#FF4F40', textColor: '#FDF8F3', rotate: -1.5 },
+  { num: '02', title: 'Experts\nOnly',       desc: 'Talk to the builders, not account managers. Senior engineers, zero layers of bureaucracy.',    color: '#1E1A2E', textColor: '#FDF8F3', rotate: 1.5 },
+  { num: '03', title: 'Ship >\nSlides',      desc: 'We ship production code, not pitch decks. Results over presentations, always.',                color: 'rgba(254,155,102,0.8)', textColor: '#1E1A2E', rotate: -1.5 },
+  { num: '04', title: 'Prove\nIt Works',     desc: 'We think before we build. Expert consultancy baked into every project we take on.',            color: '#B9B0E8', textColor: '#1E1A2E', rotate: 1.5 },
+  { num: '05', title: 'No Nonsense',         desc: 'Clear communication, no jargon. We speak human — always. No exceptions.',                     color: '#1E1A2E', textColor: '#FDF8F3', rotate: -0.5 },
 ];
 
 export default function Principles() {
@@ -19,25 +18,19 @@ export default function Principles() {
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.fromTo('.principles-heading', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: containerRef.current, start: 'top 85%' } });
-    gsap.fromTo('.principle-card', { y: 60, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 0.9, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.principles-grid', start: 'top 80%' } });
+    gsap.fromTo('.principle-card', { y: 60, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.9, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.principles-grid', start: 'top 80%' } });
   }, { scope: containerRef });
 
   return (
-    <section id="principles" ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#FDF8F3]">
+    <section id="principles" ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#FDF8F3] rounded-t-[48px] -mt-10 relative z-10">
       <div className="max-w-[1400px] mx-auto">
         <div className="principles-heading parallax-section-heading mb-14 md:mb-20">
           <div className="mb-4">
-            <Image src="/Lobster_Final.svg" alt="" width={60} height={60} priority />
+            <img src="/Squid_Final.svg" alt="" style={{ width: 60, height: 'auto' }} />
           </div>
-          <span className="text-[10px] uppercase tracking-[0.1em] text-[#FF4F40] block mb-4">How We Work</span>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h2 className="font-black text-5xl md:text-7xl text-[#1E1A2E] leading-[0.9]">
-              We don&apos;t mess<br />around<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
-            </h2>
-            <p className="text-base text-[#1E1A2E]/50 max-w-sm leading-relaxed md:pb-2" style={{ letterSpacing: '-0.02em' }}>
-              Five non-negotiables that define how we operate and what you can expect from us.
-            </p>
-          </div>
+          <h2 className="font-black text-5xl md:text-7xl text-[#1E1A2E] leading-[0.9]">
+            We don&apos;t mess around<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
+          </h2>
         </div>
         <div className="principles-grid grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5">
           <div className="md:col-span-7"><PrincipleCard principle={PRINCIPLES[0]} size="large" /></div>
@@ -58,37 +51,73 @@ function PrincipleCard({ principle, size }: { principle: typeof PRINCIPLES[0]; s
 
   if (size === 'band') {
     return (
-      <div ref={cardRef} onMouseEnter={handleEnter} onMouseLeave={handleLeave}
-        className="principle-card group relative overflow-hidden rounded-[28px] cursor-default border border-transparent"
+      <div
+        ref={cardRef}
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+        className="principle-card group relative overflow-hidden rounded-[28px] cursor-default"
         style={{ backgroundColor: principle.color, color: principle.textColor, rotate: `${principle.rotate}deg` }}
       >
-        <div className="flex flex-col md:flex-row items-center justify-between p-8 md:p-10 lg:p-12 gap-6 md:gap-12">
-          <div className="flex items-center gap-6 md:gap-10">
-            <h3 className="font-black text-4xl md:text-5xl lg:text-6xl leading-[48px] tracking-tight">{principle.title.replace('\n', ' ')}</h3>
-          </div>
-          <p className="text-[15px] md:text-base leading-relaxed opacity-60 max-w-md md:text-right shrink-0" style={{ letterSpacing: '-0.02em' }}>{principle.desc}</p>
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-8 md:p-10 lg:p-12 gap-6 md:gap-16">
+          <h3
+            className="font-black text-4xl md:text-5xl leading-tight"
+            style={{ color: principle.textColor, letterSpacing: '-1px' }}
+          >
+            {principle.title.replace('\n', ' ')}
+          </h3>
+          <p
+            className="text-[14px] leading-relaxed max-w-sm shrink-0 md:text-right"
+            style={{ color: `${principle.textColor}99`, letterSpacing: '-0.02em' }}
+          >
+            {principle.desc}
+          </p>
         </div>
-        <div className="absolute -bottom-6 -right-6 w-28 h-28 rounded-full opacity-[0.08] pointer-events-none" style={{ backgroundColor: principle.textColor }} />
+        {/* Big number watermark */}
+        <div
+          className="absolute -top-6 right-8 font-black leading-none select-none pointer-events-none"
+          style={{ fontSize: '16rem', color: principle.textColor, opacity: 0.05 }}
+        >
+          {principle.num}
+        </div>
       </div>
     );
   }
 
   return (
-    <div ref={cardRef} onMouseEnter={handleEnter} onMouseLeave={handleLeave}
-      className="principle-card group relative overflow-hidden rounded-[28px] h-full min-h-[320px] md:min-h-[380px] cursor-default border border-transparent"
+    <div
+      ref={cardRef}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      className="principle-card group relative overflow-hidden rounded-[28px] h-full min-h-[340px] md:min-h-[380px] cursor-default"
       style={{ backgroundColor: principle.color, color: principle.textColor, rotate: `${principle.rotate}deg` }}
     >
       <div className="relative z-10 flex flex-col justify-between h-full p-8 md:p-10">
-        <div className="flex items-start justify-between">
-          <div className="w-3 h-3 rounded-sm opacity-30 group-hover:opacity-60 group-hover:scale-125 transition-all duration-300" style={{ backgroundColor: principle.textColor }} />
+        <div className="flex items-start">
+          <div className="w-3 h-3 rounded-sm opacity-30" style={{ backgroundColor: principle.textColor }} />
         </div>
         <div>
-          <h3 className="font-black text-4xl md:text-5xl lg:text-[3.5rem] leading-[48px] tracking-tight mb-4 whitespace-pre-line">{principle.title}</h3>
-          <div className="w-10 h-[2px] mb-4 opacity-25 group-hover:w-16 transition-all duration-500" style={{ backgroundColor: principle.textColor }} />
-          <p className="text-[14px] leading-relaxed opacity-50 max-w-[280px] group-hover:opacity-70 transition-opacity duration-400" style={{ letterSpacing: '-0.02em' }}>{principle.desc}</p>
+          <h3
+            className="font-black text-[48px] leading-[1] mb-3 whitespace-pre-line"
+            style={{ color: principle.textColor, letterSpacing: '-1px' }}
+          >
+            {principle.title}
+          </h3>
+          <div className="w-10 h-[2px] mb-4 opacity-25" style={{ backgroundColor: principle.textColor }} />
+          <p
+            className="text-[14px] leading-relaxed max-w-[280px]"
+            style={{ color: `${principle.textColor}99`, letterSpacing: '-0.02em' }}
+          >
+            {principle.desc}
+          </p>
         </div>
       </div>
-      <div className="absolute -top-4 -right-4 font-black text-[12rem] md:text-[16rem] leading-none opacity-[0.04] pointer-events-none select-none" style={{ color: principle.textColor }}>{principle.num}</div>
+      {/* Big number watermark */}
+      <div
+        className="absolute -top-4 -right-4 font-black leading-none select-none pointer-events-none"
+        style={{ fontSize: '16rem', color: principle.textColor, opacity: 0.05 }}
+      >
+        {principle.num}
+      </div>
     </div>
   );
 }

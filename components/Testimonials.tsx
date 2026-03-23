@@ -8,35 +8,36 @@ const TESTIMONIALS = [
   {
     quote: "Lobster delivered in 3 weeks what previous agencies had been promising for 3 months. The team was direct, fast, and actually gave a damn about the outcome.",
     name: "Sarah Brennan",
-    role: "Founder, FinFlow",
-    avatar: "/images/40YISsvwSJc4RxvqVYZATAMwlM.jpg.png",
+    role: "Founder, Whirlpool",
+    avatarColor: '#FF4F40',
   },
   {
-    quote: "No fluff, no account managers, no nonsense. Just engineers who ship. The product went live on time, under budget, and it actually works.",
-    name: "Marcus Liu",
-    role: "CTO, LaunchPad",
-    avatar: "/images/5gmEX58ZB6E6bhMpCUhzutgd48.jpg.png",
+    quote: "Lobster delivered in 3 weeks what previous agencies had been promising for 3 months. The team was direct, fast, and actually gave a damn about the outcome.",
+    name: "George Broomby",
+    role: "Founder, Indesit",
+    avatarColor: '#B9B0E8',
   },
   {
     quote: "Our data pipeline was a mess. Lobster rebuilt it from scratch in 6 weeks. We went from 12-hour batch jobs to real-time in one sprint.",
-    name: "Ryan Okonkwo",
-    role: "Head of Data, Altoe",
-    avatar: "/images/Ryan.jpeg",
+    name: "Barbara Okonkwo",
+    role: "Founder, Spot",
+    avatarColor: '#FE9B66',
   },
   {
     quote: "I've worked with a lot of agencies. Lobster is different — they push back when your idea is wrong and tell you why. That's rare and incredibly valuable.",
     name: "Priya Mehta",
     role: "CEO, TalentBridge",
-    avatar: "/images/W6EKuDKZ6ilw7quzpU9IfkL248E.jpg.png",
+    avatarColor: '#1E1A2E',
   },
 ];
 
 export default function Testimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
+
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.fromTo('.testimonials-heading', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: containerRef.current, start: 'top 85%' } });
-    gsap.fromTo('.testimonial-card', { y: 60, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 0.9, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '.testimonials-grid', start: 'top 80%' } });
+    gsap.fromTo('.testimonial-card', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.testimonials-grid', start: 'top 80%' } });
   }, { scope: containerRef });
 
   return (
@@ -44,27 +45,30 @@ export default function Testimonials() {
       <div className="max-w-[1400px] mx-auto">
         <div className="testimonials-heading parallax-section-heading mb-14 md:mb-20">
           <div className="mb-4">
-            <img src="/Squid_Final.svg" alt="" style={{ width: 72, height: 'auto' }} />
+            <img src="/Lighthouse_Final.svg" alt="" style={{ width: 60, height: 'auto' }} />
           </div>
-          <span className="text-[10px] uppercase tracking-[0.1em] text-[#FF4F40] block mb-4">Social Proof</span>
           <h2 className="font-black text-5xl md:text-7xl text-[#1E1A2E] leading-[0.9]">
-            What clients say<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
+            What our Lobsters say<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
           </h2>
         </div>
         <div className="testimonials-grid grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
           {TESTIMONIALS.map((t, i) => (
-            <div key={i} className="testimonial-card bg-white rounded-[28px] p-8 md:p-10 border border-[#1E1A2E]/[0.06] flex flex-col justify-between min-h-[220px]">
-              <p className="text-[16px] md:text-[18px] text-[#1E1A2E] leading-[1.6] mb-8" style={{ letterSpacing: '-0.02em' }}>
+            <div
+              key={i}
+              className="testimonial-card bg-white rounded-[28px] p-8 md:p-12 border border-[#1E1A2E]/[0.06] flex flex-col gap-5"
+              style={{ minHeight: 228 }}
+            >
+              <p className="text-[16px] text-[#1E1A2E] leading-[1.55]">
                 &ldquo;{t.quote}&rdquo;
               </p>
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full overflow-hidden bg-[#F5F0EA] shrink-0">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
-                </div>
+                <div
+                  className="w-10 h-10 rounded-full shrink-0"
+                  style={{ backgroundColor: t.avatarColor }}
+                />
                 <div>
-                  <p className="text-[14px] font-semibold text-[#1E1A2E]" style={{ letterSpacing: '-0.02em' }}>{t.name}</p>
-                  <p className="text-[12px] text-[#1E1A2E]/40">{t.role}</p>
+                  <p className="text-[16px] font-semibold text-[#1E1A2E]">{t.name}</p>
+                  <p className="text-[12px]" style={{ color: 'rgba(30,26,46,0.4)' }}>{t.role}</p>
                 </div>
               </div>
             </div>

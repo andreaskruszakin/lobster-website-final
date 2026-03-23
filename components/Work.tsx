@@ -3,52 +3,63 @@ import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import BlobButton from './BlobButton';
 
 const WORK_ITEMS = [
-  { id: 1, title: 'Data Dashboard', client: 'Susi Mob', category: 'Web App', image: '/images/4cd0e87280f410819433872a8b3967fb268b1694.png', accent: '#FF4F40' },
-  { id: 2, title: 'Spot', client: 'Craftwork', category: 'Branding', image: '/images/f2ef28fc0f4b5766c42c1fe15af0d3df07c563ea.png', accent: '#B9B0E8' },
-  { id: 3, title: 'Lyfe & Times', client: 'Arpit Brandings', category: 'Web Design', image: '/images/cb81fb2be560e5f31e2169eedc19546972b0afe6.png', accent: '#1E1A2E' },
-  { id: 4, title: 'Appliance Hero', client: 'Craftwork', category: 'Product Design', image: '/images/1fb5836b62a9ad79be882abfec8d58b8fee2fdec.png', accent: '#B9B0E8' },
-];
-const CARD_CONFIGS = [
-  { height: 'h-[420px] md:h-[500px]', offset: 'md:mt-12', rotation: 'md:[rotate:-1.5deg] hover:[rotate:0deg]' },
-  { height: 'h-[400px] md:h-[480px]', offset: 'md:mt-0', rotation: 'md:[rotate:1deg] hover:[rotate:0deg]' },
-  { height: 'h-[400px] md:h-[490px]', offset: 'md:mt-0', rotation: 'md:[rotate:-0.5deg] hover:[rotate:0deg]' },
-  { height: 'h-[420px] md:h-[510px]', offset: 'md:mt-10', rotation: 'md:[rotate:1.5deg] hover:[rotate:0deg]' },
+  { id: 1, title: 'Data Dashboard', client: 'Indesit', category: 'Web App', color: '#FF4F40', textColor: '#FDF8F3', rotate: -1.5 },
+  { id: 2, title: 'AWS Migration', client: 'Appliance Hero', category: 'Infrastructure', color: '#B9B0E8', textColor: '#FDF8F3', rotate: 1.5 },
+  { id: 3, title: 'Data Warehousing', client: 'Hotpoint', category: 'Data Engineering', color: '#FE9B66', textColor: '#FDF8F3', rotate: 1.5 },
+  { id: 4, title: 'Interactive WebGL', client: 'Whirlpool', category: 'Digital Experience', color: '#1E1A2E', textColor: '#FDF8F3', rotate: -1.5 },
 ];
 
-function WorkCard({ item, config }: { item: typeof WORK_ITEMS[0]; config: typeof CARD_CONFIGS[0] }) {
+function WorkCard({ item }: { item: typeof WORK_ITEMS[0] }) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const imgWrapperRef = useRef<HTMLDivElement>(null);
-  const handleEnter = () => { if (imgWrapperRef.current) gsap.to(imgWrapperRef.current, { scale: 1.06, duration: 0.6, ease: 'power2.out' }); };
-  const handleLeave = () => { if (imgWrapperRef.current) gsap.to(imgWrapperRef.current, { scale: 1, duration: 0.5, ease: 'power2.out' }); };
+
+  const handleEnter = () => {
+    if (cardRef.current) gsap.to(cardRef.current, { rotate: 0, scale: 1.02, duration: 0.4, ease: 'power2.out' });
+  };
+  const handleLeave = () => {
+    if (cardRef.current) gsap.to(cardRef.current, { rotate: item.rotate, scale: 1, duration: 0.5, ease: 'power2.out' });
+  };
 
   return (
-    <div className={`work-card ${config.offset}`}>
-      <div ref={cardRef} onMouseEnter={handleEnter} onMouseLeave={handleLeave}
-        className={`group relative ${config.height} cursor-pointer transition-all duration-500 ${config.rotation}`}
-        style={{ border: '1px solid rgba(30,26,46,0.06)', borderRadius: 28 }}
+    <div className="work-card flex items-center justify-center" style={{ minHeight: 505 }}>
+      <div
+        ref={cardRef}
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+        className="relative overflow-hidden rounded-[28px] cursor-pointer w-full"
+        style={{ backgroundColor: item.color, rotate: `${item.rotate}deg`, minHeight: 489, height: '489px' }}
       >
-        <div className="absolute inset-0 overflow-hidden" style={{ borderRadius: 28, WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}>
-          <div ref={imgWrapperRef} className="absolute inset-[-8%] w-[116%] h-[116%] work-parallax-img">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1E1A2E]/70 via-[#1E1A2E]/5 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
-        </div>
-        <div className="work-arrow-btn absolute top-5 right-5 z-30">
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm border border-white/20 scale-90 group-hover:scale-100 transition-all duration-400">
-            <svg className="w-3.5 h-3.5 text-[#1E1A2E] group-hover:rotate-45 transition-transform duration-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+        {/* Arrow button top-left */}
+        <div className="absolute top-6 left-5 z-20">
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-[rgba(253,248,243,0.9)] backdrop-blur-sm border border-[rgba(253,248,243,0.2)] hover:scale-110 transition-transform duration-200">
+            <svg className="w-3 h-3 text-[#1E1A2E]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
             </svg>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 z-10 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
-          <h3 className="font-black text-2xl md:text-[28px] text-white leading-[0.95] mb-3">{item.title}</h3>
-          <div className="flex items-center gap-2">
-            <span className="inline-block px-3 py-1 rounded-lg text-white text-[11px] font-semibold" style={{ backgroundColor: item.accent, letterSpacing: '-0.02em' }}>{item.client}</span>
-            <span className="text-[9px] uppercase tracking-[0.08em] text-white/40">{item.category}</span>
+
+        {/* Bottom content */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+          <h3
+            className="font-black text-[25px] mb-3 leading-[1.1]"
+            style={{ color: item.textColor, letterSpacing: '-0.2px' }}
+          >
+            {item.title}
+          </h3>
+          <div className="flex items-center gap-3">
+            <span
+              className="px-3 py-1.5 rounded-lg text-[14px] font-medium"
+              style={{ backgroundColor: 'rgba(253,248,243,0.25)', color: item.textColor }}
+            >
+              {item.client}
+            </span>
+            <span
+              className="text-[12px]"
+              style={{ color: `${item.textColor}99` }}
+            >
+              {item.category}
+            </span>
           </div>
         </div>
       </div>
@@ -58,15 +69,11 @@ function WorkCard({ item, config }: { item: typeof WORK_ITEMS[0]; config: typeof
 
 export default function Work() {
   const containerRef = useRef<HTMLDivElement>(null);
+
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.fromTo('.work-heading', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: containerRef.current, start: 'top 85%' } });
-    gsap.fromTo('.work-card', { y: 80, opacity: 0, scale: 0.92 }, { y: 0, opacity: 1, scale: 1, duration: 1, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: containerRef.current, start: 'top 70%' } });
-    gsap.utils.toArray<HTMLElement>('.work-card').forEach((card) => {
-      const img = card.querySelector('.work-parallax-img') as HTMLElement;
-      if (img) gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: 0.5 } });
-    });
-    gsap.fromTo('.work-arrow-btn', { y: 0 }, { y: -3, duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: 0.3 });
+    gsap.fromTo('.work-card', { y: 60, opacity: 0, scale: 0.95 }, { y: 0, opacity: 1, scale: 1, duration: 1, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: containerRef.current, start: 'top 70%' } });
   }, { scope: containerRef });
 
   return (
@@ -76,19 +83,24 @@ export default function Work() {
           <div className="mb-4">
             <img src="/Folder_Final.svg" alt="" style={{ width: 60, height: 'auto' }} />
           </div>
-          <span className="text-[10px] uppercase tracking-[0.1em] text-[#FF4F40] block mb-4">Selected Work</span>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h2 className="font-black text-5xl md:text-7xl lg:text-[5.5rem] text-[#1E1A2E] leading-[0.88]">
-              Projects<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
+            <h2 className="font-black text-5xl md:text-7xl text-[#1E1A2E] leading-[0.9]">
+              Selected works<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
             </h2>
-            <p className="text-base text-[#1E1A2E]/50 max-w-sm leading-relaxed md:pb-2" style={{ letterSpacing: '-0.02em' }}>A few things we&apos;ve built that we&apos;re particularly proud of.</p>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
-          {WORK_ITEMS.map((item, i) => <WorkCard key={item.id} item={item} config={CARD_CONFIGS[i]} />)}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+          {WORK_ITEMS.map((item) => (
+            <WorkCard key={item.id} item={item} />
+          ))}
         </div>
-        <div className="mt-16 md:mt-20 flex justify-center">
-          <BlobButton>See All Works</BlobButton>
+        <div className="mt-14 flex justify-center">
+          <button
+            onClick={() => {}}
+            className="bg-[#FF4F40] text-[#FDF8F3] px-8 py-3.5 rounded-[17px] text-[16px] font-semibold hover:bg-[#ff6b5a] active:scale-95 transition-all duration-200"
+          >
+            View Projects
+          </button>
         </div>
       </div>
     </section>

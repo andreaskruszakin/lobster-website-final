@@ -1,32 +1,23 @@
 'use client';
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-const CHARS = ['L', 'O', 'B', 'S', 'T', 'E', 'R'];
-
 export default function Hero({ isReady = true }: { isReady?: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const stickerRef = useRef<HTMLDivElement>(null);
-  const [time, setTime] = useState('');
+  const lobsterRef = useRef<HTMLDivElement>(null);
+  const clamRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const update = () =>
-      setTime(new Date().toLocaleTimeString('en-GB', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: 'Europe/London' }));
-    update();
-    const id = setInterval(update, 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  // Mouse parallax on illustration
   useEffect(() => {
     const container = containerRef.current;
-    const sticker = stickerRef.current;
-    if (!container || !sticker) return;
+    const lobster = lobsterRef.current;
+    const clam = clamRef.current;
+    if (!container || !lobster || !clam) return;
     const onMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 28;
-      const y = (e.clientY / window.innerHeight - 0.5) * 18;
-      gsap.to(sticker, { x, y, duration: 0.9, ease: 'power2.out' });
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 12;
+      gsap.to(lobster, { x, y, duration: 1, ease: 'power2.out' });
+      gsap.to(clam, { x: x * -0.6, y: y * -0.6, duration: 1.2, ease: 'power2.out' });
     };
     container.addEventListener('mousemove', onMove);
     return () => container.removeEventListener('mousemove', onMove);
@@ -34,100 +25,117 @@ export default function Hero({ isReady = true }: { isReady?: boolean }) {
 
   useGSAP(() => {
     if (!isReady) return;
-    const tl = gsap.timeline({ delay: 0.15 });
-
-    tl.fromTo(
-      '.hero-char',
-      { y: '80%', opacity: 0, filter: 'blur(24px)', rotate: 6 },
-      { y: '0%', opacity: 1, filter: 'blur(0px)', rotate: 0, duration: 1.1, stagger: 0.065, ease: 'power4.out' }
-    );
-    tl.fromTo(
-      '.hero-tagline',
-      { opacity: 0, y: 28, filter: 'blur(8px)' },
-      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.9, ease: 'power3.out' },
-      '-=0.55'
-    );
-    tl.fromTo(
-      '.hero-meta',
-      { opacity: 0, y: 14 },
-      { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power2.out' },
-      '-=0.55'
-    );
-    tl.fromTo(
-      '.hero-illustration',
-      { scale: 0.7, opacity: 0, rotate: -12 },
-      { scale: 1, opacity: 1, rotate: 0, duration: 1.1, ease: 'back.out(1.6)' },
-      '-=0.9'
-    );
-
-    gsap.to('.hero-illustration', { y: -16, rotation: 4, duration: 4.2, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 0.8 });
+    const tl = gsap.timeline({ delay: 0.1 });
+    tl.fromTo('.hero-line-1', { y: '100%', opacity: 0 }, { y: '0%', opacity: 1, duration: 1, ease: 'power4.out' });
+    tl.fromTo('.hero-line-2', { y: '100%', opacity: 0 }, { y: '0%', opacity: 1, duration: 1, ease: 'power4.out' }, '-=0.7');
+    tl.fromTo('.hero-sub', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.4');
+    tl.fromTo('.hero-cta', { opacity: 0, y: 16, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: 'power3.out' }, '-=0.4');
+    tl.fromTo('.hero-lobster', { scale: 0.6, opacity: 0, rotate: 25 }, { scale: 1, opacity: 1, rotate: 15, duration: 1.2, ease: 'back.out(1.4)' }, '-=0.9');
+    tl.fromTo('.hero-clam', { scale: 0.6, opacity: 0, rotate: -25 }, { scale: 1, opacity: 1, rotate: -15, duration: 1.2, ease: 'back.out(1.4)' }, '-=1.0');
+    gsap.to('.hero-lobster', { y: -14, duration: 4, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1.2 });
+    gsap.to('.hero-clam', { y: 10, duration: 3.5, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 0.6 });
   }, { scope: containerRef, dependencies: [isReady] });
 
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section ref={containerRef} className="relative min-h-[100dvh] flex flex-col overflow-hidden" style={{ backgroundColor: '#FF4F40' }}>
-      {/* Illustration — right side, mouse-parallax */}
+    <section
+      ref={containerRef}
+      className="relative min-h-[100dvh] flex flex-col overflow-hidden"
+      style={{ backgroundColor: '#FF4F40' }}
+    >
+      {/* Lobster illustration — top right */}
       <div
-        ref={stickerRef}
-        className="absolute z-20 pointer-events-none"
-        style={{ right: '3%', top: '50%', transform: 'translateY(-50%)', width: 'clamp(170px, 24vw, 340px)' }}
+        ref={lobsterRef}
+        className="absolute z-10 pointer-events-none"
+        style={{ right: '4%', top: '18%', width: 'clamp(130px, 16vw, 220px)' }}
       >
-        <img src="/Lobster_Final_Hero.svg" alt="" className="hero-illustration w-full h-auto" />
+        <img
+          src="/Lobster_Hero_New.png"
+          alt=""
+          className="hero-lobster w-full h-auto"
+          style={{ rotate: '15deg' }}
+        />
       </div>
 
-      {/* Top metadata */}
-      <div className="relative z-20 pt-24 px-6 md:px-14 flex justify-between items-start">
-        <div className="hero-meta">
-          <p className="text-[8px] uppercase tracking-[0.08em] text-[#FDF8F3]/55">Est. 2024</p>
-          <p className="text-[8px] uppercase tracking-[0.08em] text-[#FDF8F3]/55 mt-1">London, UK</p>
-        </div>
-        <div className="hero-meta text-right">
-          <p className="text-[8px] uppercase tracking-[0.08em] text-[#FDF8F3]/55">Web Development</p>
-          <p className="text-[8px] uppercase tracking-[0.08em] text-[#FDF8F3]/55 mt-1">Creative Agency</p>
-        </div>
+      {/* Clam illustration — left side */}
+      <div
+        ref={clamRef}
+        className="absolute z-10 pointer-events-none"
+        style={{ left: '6%', bottom: '22%', width: 'clamp(100px, 12vw, 180px)' }}
+      >
+        <img
+          src="/Clam_Final.png"
+          alt=""
+          className="hero-clam w-full h-auto"
+          style={{ rotate: '-15deg' }}
+        />
       </div>
 
-      {/* LOBSTER text + tagline */}
-      <div className="flex-1 flex flex-col justify-center relative z-10 px-6 md:px-14 pb-10">
-        <div className="overflow-hidden" style={{ perspective: '900px' }}>
-          <div className="flex items-end leading-[0.82] select-none" style={{ marginLeft: '-0.03em' }}>
-            {CHARS.map((char, i) => (
-              <span
-                key={i}
-                className="hero-char inline-block will-change-transform"
-                style={{
-                  fontFamily: "'BN Sonic', sans-serif",
-                  fontSize: 'clamp(4.5rem, 18.5vw, 17rem)',
-                  fontWeight: 400,
-                  color: '#FDF8F3',
-                  letterSpacing: '-0.01em',
-                  lineHeight: 0.88,
-                }}
-              >
-                {char}
-              </span>
-            ))}
+      {/* Main content */}
+      <div className="flex-1 flex flex-col justify-center items-center text-center relative z-20 px-6 md:px-14 pt-28 pb-16">
+        <div className="overflow-hidden mb-0">
+          <div
+            className="hero-line-1"
+            style={{
+              fontFamily: "'BN Sonic', sans-serif",
+              fontSize: 'clamp(4rem, 12vw, 10rem)',
+              fontWeight: 400,
+              color: '#FDF8F3',
+              letterSpacing: '-0.015em',
+              lineHeight: 0.9,
+            }}
+          >
+            We build websites
+          </div>
+        </div>
+        <div className="overflow-hidden">
+          <div
+            className="hero-line-2"
+            style={{
+              fontFamily: "'BN Sonic', sans-serif",
+              fontSize: 'clamp(4rem, 12vw, 10rem)',
+              fontWeight: 400,
+              color: '#FDF8F3',
+              letterSpacing: '-0.015em',
+              lineHeight: 0.9,
+            }}
+          >
+            that Snap
           </div>
         </div>
 
-        <div className="hero-tagline mt-5 md:mt-7 max-w-xl">
-          <p className="text-base md:text-xl font-medium leading-snug" style={{ color: 'rgba(253,248,243,0.82)', letterSpacing: '-0.02em' }}>
-            The creative studio that builds digital experiences
-            <span className="font-light italic ml-1" style={{ color: 'rgba(253,248,243,0.45)', fontSize: '0.87em' }}>
-              {' '}worth talking about.
-            </span>
-          </p>
+        <p
+          className="hero-sub mt-8 max-w-[420px] text-center text-base md:text-lg leading-[1.55]"
+          style={{ color: 'rgba(253,248,243,0.8)', letterSpacing: '-0.01em' }}
+        >
+          Fresh off the ocean floor, web products so good they should come with butter.
+        </p>
+
+        <div className="hero-cta mt-8 flex items-center gap-2">
+          <button
+            onClick={() => scrollTo('contact')}
+            className="flex items-center gap-2 bg-[#FDF8F3] text-[#FF4F40] px-5 py-3 rounded-xl text-[14px] font-semibold hover:bg-white active:scale-95 transition-all duration-200"
+          >
+            Book a call
+          </button>
+          <button
+            onClick={() => scrollTo('services')}
+            className="flex items-center justify-center bg-[rgba(253,248,243,0.15)] text-[#FDF8F3] w-11 h-11 rounded-xl hover:bg-[rgba(253,248,243,0.25)] active:scale-95 transition-all duration-200"
+            aria-label="View services"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg>
+          </button>
         </div>
       </div>
 
-      {/* Bottom clock */}
-      <div className="relative z-20 pb-16 px-6 md:px-14 flex justify-end items-end">
-        <div className="hero-meta text-right">
-          <p className="text-[10px] uppercase tracking-[0.08em]" style={{ color: 'rgba(253,248,243,0.45)' }}>London</p>
-          <p className="text-[14px] tabular-nums tracking-[0.04em] mt-0.5 uppercase" style={{ color: 'rgba(253,248,243,0.75)' }}>{time}</p>
-        </div>
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-8 bg-[#FDF8F3] rounded-t-[2rem]" />
+      {/* Bottom curve */}
+      <div className="absolute bottom-0 left-0 right-0 h-10 bg-[#FDF8F3] rounded-t-[2rem]" />
     </section>
   );
 }
