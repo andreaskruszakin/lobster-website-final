@@ -1,167 +1,133 @@
 'use client';
 import React, { useRef, useState } from 'react';
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
-
-const SERVICE_ITEMS = [
-  { label: 'Front-end', desc: 'React, Next.js, Motion' },
-  { label: 'Data Engineering', desc: 'Pipelines & Analytics' },
-  { label: 'Infrastructure', desc: 'Cloud & DevOps' },
-];
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import SlideMenu from './SlideMenu';
 
 export default function Navbar() {
-  const [isHidden, setIsHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const { scrollY } = useScroll();
-  const lastYRef = useRef(0);
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    const diff = latest - lastYRef.current;
-    if (Math.abs(diff) > 5) setIsHidden(diff > 0 && latest > 100);
     setIsScrolled(latest > 80);
-    lastYRef.current = latest;
   });
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
-    setServicesOpen(false);
   };
 
   const onRed = !isScrolled;
 
   return (
-    <div
-      className={`fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none transition-all duration-300 ${
-        onRed ? 'px-0 pt-0' : 'px-4 pt-4'
-      }`}
-    >
-      <motion.nav
-        variants={{ visible: { y: 0, opacity: 1 }, hidden: { y: -100, opacity: 0 } }}
-        initial={{ y: -40, opacity: 0 }}
-        animate={isHidden ? 'hidden' : 'visible'}
-        transition={{ type: 'spring', stiffness: 260, damping: 24 }}
-        className={`pointer-events-auto w-full px-5 py-3 flex items-center justify-between transition-all duration-500 ${
-          onRed
-            ? 'bg-[#FF4F40] rounded-none'
-            : 'max-w-[1344px] bg-[#FDF8F3]/95 backdrop-blur-2xl border border-[#1E1A2E]/[0.08] shadow-sm rounded-[20px]'
+    <>
+      <SlideMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+
+      <div
+        className={`fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none transition-all duration-300 ${
+          onRed ? 'px-0 pt-0' : 'px-4 pt-4'
         }`}
       >
-        {/* Left nav pills */}
-        <div className="flex items-center gap-1">
-          <button
-            onClick={() => scrollTo('work')}
-            className={`px-4 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 ${
-              onRed
-                ? 'bg-[rgba(253,248,243,0.15)] text-[#FDF8F3] hover:bg-[rgba(253,248,243,0.25)]'
-                : 'text-[#1E1A2E]/60 hover:text-[#1E1A2E] hover:bg-[#1E1A2E]/[0.06]'
-            }`}
-          >
-            Projects
-          </button>
-          <button
-            onClick={() => scrollTo('contact')}
-            className={`px-4 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 ${
-              onRed
-                ? 'bg-[rgba(253,248,243,0.15)] text-[#FDF8F3] hover:bg-[rgba(253,248,243,0.25)]'
-                : 'text-[#1E1A2E]/60 hover:text-[#1E1A2E] hover:bg-[#1E1A2E]/[0.06]'
-            }`}
-          >
-            Contact
-          </button>
-
-          {/* Services split pill */}
-          <div
-            className="relative flex items-center"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
-          >
+        <motion.nav
+          initial={{ y: -40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: 'spring', stiffness: 260, damping: 24 }}
+          className={`pointer-events-auto w-full px-5 py-3 flex items-center justify-between transition-all duration-500 ${
+            onRed
+              ? 'bg-[#FF4F40] rounded-none'
+              : 'max-w-[1344px] bg-[#FDF8F3]/95 backdrop-blur-2xl border border-[#1E1A2E]/[0.08] shadow-sm rounded-[20px]'
+          }`}
+        >
+          {/* Left nav pills */}
+          <div className="flex items-center gap-1">
             <button
-              onClick={() => scrollTo('services')}
-              className={`px-4 py-2.5 rounded-l-xl text-[13px] font-medium transition-all duration-200 ${
+              onClick={() => scrollTo('work')}
+              className={`px-4 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 ${
                 onRed
                   ? 'bg-[rgba(253,248,243,0.15)] text-[#FDF8F3] hover:bg-[rgba(253,248,243,0.25)]'
                   : 'text-[#1E1A2E]/60 hover:text-[#1E1A2E] hover:bg-[#1E1A2E]/[0.06]'
               }`}
             >
-              Services
+              Projects
             </button>
             <button
-              className={`w-[42px] h-[40px] rounded-r-xl flex items-center justify-center text-[18px] leading-none transition-all duration-200 ${
+              onClick={() => scrollTo('contact')}
+              className={`px-4 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 ${
                 onRed
                   ? 'bg-[rgba(253,248,243,0.15)] text-[#FDF8F3] hover:bg-[rgba(253,248,243,0.25)]'
-                  : 'text-[#1E1A2E]/40 hover:text-[#1E1A2E] hover:bg-[#1E1A2E]/[0.06]'
+                  : 'text-[#1E1A2E]/60 hover:text-[#1E1A2E] hover:bg-[#1E1A2E]/[0.06]'
               }`}
-              aria-label="Services menu"
             >
-              <span className="tracking-[0.15em] text-[10px]">•••</span>
+              Contact
             </button>
-            <AnimatePresence>
-              {servicesOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                  transition={{ duration: 0.15, ease: 'easeOut' }}
-                  className="absolute top-full left-0 mt-2 w-56 bg-[#1E1A2E]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-2 shadow-xl"
-                >
-                  {SERVICE_ITEMS.map((item) => (
-                    <button
-                      key={item.label}
-                      onClick={() => scrollTo('services')}
-                      className="w-full text-left px-4 py-3 rounded-xl hover:bg-white/[0.08] transition-all group"
-                    >
-                      <p className="text-[13px] font-medium text-[#FDF8F3]/80 group-hover:text-[#FDF8F3]">{item.label}</p>
-                      <p className="text-[11px] text-[#FDF8F3]/30 mt-0.5">{item.desc}</p>
-                    </button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
 
-        {/* Center logo */}
-        <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
-          {onRed ? (
-            <>
-              {/* Small lobster icon flipped + rotated */}
-              <img
-                src="/Lobster.svg"
-                alt=""
-                className="w-6 h-6"
-                style={{ transform: 'scaleY(-1) rotate(174deg)', filter: 'brightness(0) invert(1)', opacity: 0.85 }}
-              />
-              <span
-                style={{
-                  fontFamily: "'BN Sonic', sans-serif",
-                  fontSize: 28,
-                  fontWeight: 400,
-                  color: '#FDF8F3',
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1,
-                }}
+            {/* Services split pill — both open the slide menu */}
+            <div className="flex items-center">
+              <button
+                onClick={() => setMenuOpen(true)}
+                className={`px-4 py-2.5 rounded-l-xl text-[13px] font-medium transition-all duration-200 ${
+                  onRed
+                    ? 'bg-[rgba(253,248,243,0.15)] text-[#FDF8F3] hover:bg-[rgba(253,248,243,0.25)]'
+                    : 'text-[#1E1A2E]/60 hover:text-[#1E1A2E] hover:bg-[#1E1A2E]/[0.06]'
+                }`}
               >
-                Lobster
-              </span>
-            </>
-          ) : (
-            <img src="/Logo_Final.svg" alt="Lobster" className="h-7 w-auto" />
-          )}
-        </div>
+                Services
+              </button>
+              <button
+                onClick={() => setMenuOpen(true)}
+                className={`w-[42px] h-[40px] rounded-r-xl flex items-center justify-center transition-all duration-200 ${
+                  onRed
+                    ? 'bg-[rgba(253,248,243,0.15)] text-[#FDF8F3] hover:bg-[rgba(253,248,243,0.25)]'
+                    : 'text-[#1E1A2E]/40 hover:text-[#1E1A2E] hover:bg-[#1E1A2E]/[0.06]'
+                }`}
+                aria-label="Services menu"
+              >
+                <span className="tracking-[0.15em] text-[10px]">•••</span>
+              </button>
+            </div>
+          </div>
 
-        {/* Right CTA */}
-        <button
-          onClick={() => scrollTo('contact')}
-          className={`px-5 py-2.5 rounded-xl text-[13px] font-semibold transition-all duration-200 active:scale-95 ${
-            onRed
-              ? 'bg-[#FDF8F3] text-[#FF4F40] hover:bg-white'
-              : 'bg-[#FF4F40] text-white hover:bg-[#ff6b5a]'
-          }`}
-        >
-          Book a call
-        </button>
-      </motion.nav>
-    </div>
+          {/* Center logo */}
+          <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
+            {onRed ? (
+              <>
+                <img
+                  src="/Lobster.svg"
+                  alt=""
+                  className="w-6 h-6"
+                  style={{ transform: 'scaleY(-1) rotate(174deg)', filter: 'brightness(0) invert(1)', opacity: 0.85 }}
+                />
+                <span
+                  style={{
+                    fontFamily: "'BN Sonic', sans-serif",
+                    fontSize: 28,
+                    fontWeight: 400,
+                    color: '#FDF8F3',
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1,
+                  }}
+                >
+                  Lobster
+                </span>
+              </>
+            ) : (
+              <img src="/Logo_Final.svg" alt="Lobster" className="h-7 w-auto" />
+            )}
+          </div>
+
+          {/* Right CTA */}
+          <button
+            onClick={() => scrollTo('contact')}
+            className={`px-5 py-2.5 rounded-xl text-[13px] font-semibold transition-all duration-200 active:scale-95 ${
+              onRed
+                ? 'bg-[#FDF8F3] text-[#FF4F40] hover:bg-white'
+                : 'bg-[#FF4F40] text-white hover:bg-[#ff6b5a]'
+            }`}
+          >
+            Book a call
+          </button>
+        </motion.nav>
+      </div>
+    </>
   );
 }

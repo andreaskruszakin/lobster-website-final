@@ -7,16 +7,22 @@ import { ArrowUpRight } from 'lucide-react';
 
 const SERVICES = [
   {
-    num: '01', title: 'Front-end',
+    num: '01',
+    title: 'Front-end',
     capabilities: ['React & Next.js', 'Design Systems', 'Interactive WebGL', 'Motion & Animation'],
+    icon: '/Terminal.svg',
   },
   {
-    num: '02', title: 'Data Engineering',
+    num: '02',
+    title: 'Data Engineering',
     capabilities: ['ETL & Pipelines', 'Data Warehousing', 'Real-time Analytics', 'ML Integration'],
+    icon: '/Data.svg',
   },
   {
-    num: '03', title: 'Infrastructure',
+    num: '03',
+    title: 'Infrastructure',
     capabilities: ['AWS / GCP / Azure', 'DevOps Automation', 'Security & Compliance', 'CI/CD Pipelines'],
+    icon: '/Server.svg',
   },
 ];
 
@@ -25,57 +31,76 @@ export default function Services() {
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.fromTo('.services-heading', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: containerRef.current, start: 'top 85%' } });
-    gsap.fromTo('.service-row', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '.services-list', start: 'top 80%' } });
+    gsap.fromTo(
+      '.services-heading',
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out', scrollTrigger: { trigger: containerRef.current, start: 'top 85%' } }
+    );
+    gsap.fromTo(
+      '.service-card',
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.9, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '.services-cards', start: 'top 80%' } }
+    );
   }, { scope: containerRef });
 
   return (
-    <section id="services" ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#FDF8F3]">
-      <div className="max-w-[1400px] mx-auto">
-        <div className="services-heading parallax-section-heading mb-16 md:mb-20">
+    <section id="services" ref={containerRef} className="py-[120px] px-6 md:px-12 bg-[#FDF8F3]">
+      <div className="max-w-[1400px] mx-auto flex flex-col gap-16">
+
+        {/* Heading */}
+        <div className="services-heading parallax-section-heading">
           <img src="/Clam.svg" alt="" style={{ width: 80, height: 80, objectFit: 'contain' }} className="mb-0" />
-          <h2 style={{ fontFamily: "'BBH Hegarty', sans-serif", fontWeight: 400, letterSpacing: '-1px' }} className="text-5xl md:text-7xl text-[#1E1A2E] leading-[1]">
-            What we do<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em]" style={{ verticalAlign: '-0.05em' }} />
+          <h2
+            style={{ fontFamily: "'BBH Hegarty', sans-serif", fontWeight: 400, letterSpacing: '-1px' }}
+            className="text-5xl md:text-7xl text-[#1E1A2E] leading-[1]"
+          >
+            What we do
+            <span
+              className="inline-block bg-[#FF4F40] rounded-[4px] ml-[0.06em]"
+              style={{ width: 12, height: 12, verticalAlign: '-0.05em' }}
+            />
           </h2>
         </div>
 
-        <div className="services-list">
-          {SERVICES.map((service, i) => (
+        {/* Cards grid */}
+        <div className="services-cards flex flex-col md:flex-row gap-6">
+          {SERVICES.map((service) => (
             <div
               key={service.num}
-              className="service-row group border-t border-[#1E1A2E]/10 last:border-b py-8 md:py-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-12 cursor-pointer hover:opacity-80 transition-opacity duration-300"
+              className="service-card group flex flex-col justify-between rounded-[28px] overflow-hidden cursor-pointer border border-[#1E1A2E]/[0.07] hover:border-[#1E1A2E]/[0.14] transition-colors duration-300"
+              style={{ background: '#FDF8F3', flex: 1, minHeight: 467, padding: '24px 32px 32px' }}
             >
-              {/* Number */}
-              <span
-                className="shrink-0 leading-none text-[#1E1A2E]/30"
-                style={{ fontFamily: "'BBH Hegarty', sans-serif", fontWeight: 400, fontSize: 20, letterSpacing: '-0.2px' }}
-              >
-                {service.num}
-              </span>
-
-              {/* Title */}
-              <h3
-                className="shrink-0 md:w-64"
-                style={{ fontFamily: "'BBH Hegarty', sans-serif", fontWeight: 400, fontSize: 36, letterSpacing: '-1px', lineHeight: 1.1, color: '#1E1A2E' }}
-              >
-                {service.title}
-              </h3>
-
-              {/* Capabilities */}
-              <div className="flex flex-col gap-1 flex-1 opacity-60">
-                {service.capabilities.map((cap) => (
-                  <p key={cap} className="text-[16px] text-[#1E1A2E] leading-[1.5]">{cap}</p>
-                ))}
+              {/* Top: number + title + capabilities + read more */}
+              <div className="flex flex-col gap-4">
+                <span
+                  style={{ fontFamily: "'BBH Hegarty', sans-serif", fontSize: 20, letterSpacing: '-0.2px', lineHeight: '24px', color: '#1E1A2E' }}
+                >
+                  {service.num}
+                </span>
+                <h3
+                  style={{ fontFamily: "'BBH Hegarty', sans-serif", fontSize: 36, letterSpacing: '-1px', lineHeight: '40px', color: '#1E1A2E', fontWeight: 400 }}
+                >
+                  {service.title}
+                </h3>
+                <div className="flex flex-col gap-1">
+                  {service.capabilities.map((cap) => (
+                    <p key={cap} className="text-[16px] leading-[24px] text-[#1E1A2E]/60">{cap}</p>
+                  ))}
+                </div>
+                <div className="flex items-center gap-2 mt-2">
+                  <span className="text-[16px] font-medium text-[#FF4F40] leading-[18px]">Read more</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#FF4F40] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+                </div>
               </div>
 
-              {/* Read more */}
-              <div className="flex items-center gap-2 shrink-0">
-                <span className="text-[16px] font-semibold text-[#FF4F40]">Read more</span>
-                <ArrowUpRight className="w-4 h-4 text-[#FF4F40] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+              {/* Bottom: icon */}
+              <div className="mt-8">
+                <img src={service.icon} alt="" style={{ width: 80, height: 80, objectFit: 'contain' }} />
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
