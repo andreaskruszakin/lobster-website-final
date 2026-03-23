@@ -10,14 +10,31 @@ export default function Footer() {
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.fromTo('.footer-contact', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: containerRef.current, start: 'top 85%' } });
-    gsap.fromTo('.footer-wordmark', { y: '30%', opacity: 0 }, { y: '0%', opacity: 1, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.footer-wordmark', start: 'top 95%', end: 'top 60%', scrub: 0.4 } });
+
+    gsap.fromTo(
+      '.footer-contact',
+      { y: 30, opacity: 0 },
+      {
+        y: 0, opacity: 1, duration: 0.9, stagger: 0.1, ease: 'power3.out',
+        scrollTrigger: { trigger: containerRef.current, start: 'top 85%' },
+      }
+    );
+
+    // Edge-to-edge pop-in: scale from 0.82 → 1 + opacity, back.out for the pop
+    gsap.fromTo(
+      '.footer-wordmark',
+      { scale: 0.82, opacity: 0 },
+      {
+        scale: 1, opacity: 1, duration: 1.1, ease: 'back.out(1.6)',
+        scrollTrigger: { trigger: '.footer-wordmark', start: 'top 90%' },
+      }
+    );
   }, { scope: containerRef });
 
   return (
-    <footer ref={containerRef} className="bg-[#FDF8F3] px-6 md:px-12 pb-0 pt-0">
-      <div className="max-w-[1400px] mx-auto">
-        {/* Contact info row */}
+    <footer ref={containerRef} className="bg-[#FDF8F3] pb-0 pt-0 overflow-hidden">
+      {/* Contact info row — constrained width */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-8 md:gap-16 py-16 md:py-20">
           {[
             { icon: Mail, label: 'Email', value: 'hello@lobster.agency', href: 'mailto:hello@lobster.agency' },
@@ -38,22 +55,22 @@ export default function Footer() {
             </div>
           ))}
         </div>
+      </div>
 
-        {/* Large wordmark */}
-        <div className="footer-wordmark overflow-hidden">
-          <p
-            className="leading-[0.85] select-none text-center md:text-left"
-            style={{
-              fontFamily: "'BN Sonic', sans-serif",
-              fontWeight: 400,
-              fontSize: 'clamp(5rem, 18vw, 18rem)',
-              color: '#FF4F40',
-              letterSpacing: '-0.02em',
-            }}
-          >
-            Lobster
-          </p>
-        </div>
+      {/* Edge-to-edge wordmark */}
+      <div className="footer-wordmark w-full px-2 md:px-4 pb-2">
+        <p
+          className="leading-[0.85] select-none whitespace-nowrap text-center"
+          style={{
+            fontFamily: "'BN Sonic', sans-serif",
+            fontWeight: 400,
+            fontSize: 'clamp(4rem, 22.5vw, 22.5vw)',
+            color: '#FF4F40',
+            letterSpacing: '-0.02em',
+          }}
+        >
+          Lobster
+        </p>
       </div>
     </footer>
   );

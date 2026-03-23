@@ -22,7 +22,7 @@ export default function Contact() {
       <div className="max-w-[1400px] mx-auto flex flex-col items-center gap-14 md:gap-16">
         {/* Heading */}
         <div className="contact-reveal flex flex-col items-center text-center gap-4">
-          <img src="/icon-lobster.png" alt="" style={{ width: 80, height: 80, objectFit: 'contain' }} />
+          <img src="/Lobster.svg" alt="" style={{ width: 80, height: 80, objectFit: 'contain' }} />
           <div className="flex items-end gap-1">
             <h2 style={{ fontFamily: "'BBH Hegarty', sans-serif", fontWeight: 400, letterSpacing: '-1px' }} className="text-5xl md:text-7xl text-[#1E1A2E] leading-[1]">
               Let&apos;s make it Snappy

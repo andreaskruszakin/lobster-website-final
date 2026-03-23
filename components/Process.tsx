@@ -24,7 +24,7 @@ export default function Process() {
     <section id="process" ref={containerRef} className="pb-28 md:pb-36 px-6 md:px-12 bg-[#FDF8F3]">
       <div className="max-w-[1400px] mx-auto">
         <div className="process-heading parallax-section-heading mb-10">
-          <img src="/icon-lobster.png" alt="" style={{ width: 80, height: 80, objectFit: 'contain' }} className="mb-0" />
+          <img src="/Lobster.svg" alt="" style={{ width: 80, height: 80, objectFit: 'contain' }} className="mb-0" />
           <h2 style={{ fontFamily: "'BBH Hegarty', sans-serif", fontWeight: 400, letterSpacing: '-1px' }} className="text-5xl md:text-7xl text-[#1E1A2E] leading-[1]">
             How we work<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em]" style={{ verticalAlign: '-0.05em' }} />
           </h2>

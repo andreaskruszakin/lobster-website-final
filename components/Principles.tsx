@@ -25,7 +25,7 @@ export default function Principles() {
     <section id="principles" ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#FDF8F3] rounded-t-[48px] -mt-10 relative z-10">
       <div className="max-w-[1400px] mx-auto">
         <div className="principles-heading parallax-section-heading mb-14 md:mb-20">
-          <img src="/icon-squid.png" alt="" style={{ width: 80, height: 80, objectFit: 'contain' }} className="mb-0" />
+          <img src="/Squid.svg" alt="" style={{ width: 80, height: 80, objectFit: 'contain' }} className="mb-0" />
           <h2 style={{ fontFamily: "'BBH Hegarty', sans-serif", fontWeight: 400, letterSpacing: '-1px' }} className="text-5xl md:text-7xl text-[#1E1A2E] leading-[1]">
             We don&apos;t mess around<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" style={{ verticalAlign: '-0.05em' }} />
           </h2>

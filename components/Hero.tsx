@@ -54,10 +54,10 @@ export default function Hero({ isReady = true }: { isReady?: boolean }) {
         style={{ right: '4%', top: '18%', width: 'clamp(130px, 16vw, 220px)' }}
       >
         <img
-          src="/Lobster_Hero_New.png"
+          src="/Lobster.svg"
           alt=""
           className="hero-lobster w-full h-auto"
-          style={{ rotate: '15deg' }}
+          style={{ rotate: '15deg', filter: 'brightness(0) invert(1)', opacity: 0.88 }}
         />
       </div>
 
@@ -68,10 +68,10 @@ export default function Hero({ isReady = true }: { isReady?: boolean }) {
         style={{ left: '6%', bottom: '22%', width: 'clamp(100px, 12vw, 180px)' }}
       >
         <img
-          src="/Clam_Final.png"
+          src="/Clam.svg"
           alt=""
           className="hero-clam w-full h-auto"
-          style={{ rotate: '-15deg' }}
+          style={{ rotate: '-15deg', filter: 'brightness(0) invert(1)', opacity: 0.88 }}
         />
       </div>
 

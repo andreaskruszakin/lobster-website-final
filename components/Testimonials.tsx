@@ -24,7 +24,7 @@ export default function Testimonials() {
     <section ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#FDF8F3]">
       <div className="max-w-[1400px] mx-auto">
         <div className="testimonials-heading parallax-section-heading mb-14 md:mb-20">
-          <img src="/icon-lighthouse.png" alt="" style={{ width: 80, height: 80, objectFit: 'contain' }} className="mb-0" />
+          <img src="/Lighthouse.svg" alt="" style={{ width: 80, height: 80, objectFit: 'contain' }} className="mb-0" />
           <h2 style={{ fontFamily: "'BBH Hegarty', sans-serif", fontWeight: 400, letterSpacing: '-1px' }} className="text-5xl md:text-7xl text-[#1E1A2E] leading-[1]">
             What our Lobsters say<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em]" style={{ verticalAlign: '-0.05em' }} />
           </h2>
