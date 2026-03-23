@@ -5,11 +5,11 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const PRINCIPLES = [
-  { num: '01', title: 'Bold by\nDefault',    desc: 'We make decisions. We take positions. No mealy-mouthed hedging — just clear, confident work.', color: '#FF4F40', textColor: '#FDF8F3', rotate: -1.5 },
-  { num: '02', title: 'Experts\nOnly',       desc: 'Talk to the builders, not account managers. Senior engineers, zero layers of bureaucracy.',    color: '#1E1A2E', textColor: '#FDF8F3', rotate: 1.5 },
-  { num: '03', title: 'Ship >\nSlides',      desc: 'We ship production code, not pitch decks. Results over presentations, always.',                color: 'rgba(254,155,102,0.8)', textColor: '#1E1A2E', rotate: -1.5 },
-  { num: '04', title: 'Prove\nIt Works',     desc: 'We think before we build. Expert consultancy baked into every project we take on.',            color: '#B9B0E8', textColor: '#1E1A2E', rotate: 1.5 },
-  { num: '05', title: 'No Nonsense',         desc: 'Clear communication, no jargon. We speak human — always. No exceptions.',                     color: '#1E1A2E', textColor: '#FDF8F3', rotate: -0.5 },
+  { num: '01', title: 'Bold by\nDefault',  desc: 'We make decisions. We take positions. No mealy-mouthed hedging — just clear, confident work.', color: '#FF4F40', textColor: '#FDF8F3', rotate: -1.5 },
+  { num: '02', title: 'Experts\nOnly',     desc: 'Talk to the builders, not account managers. Senior engineers, zero layers of bureaucracy.',    color: '#1E1A2E', textColor: '#FDF8F3', rotate: 1.5 },
+  { num: '03', title: 'Ship >\nSlides',    desc: 'We ship production code, not pitch decks. Results over presentations, always.',                color: 'rgba(254,155,102,0.8)', textColor: '#1E1A2E', rotate: -1.5 },
+  { num: '04', title: 'Prove\nIt Works',   desc: 'We think before we build. Expert consultancy baked into every project we take on.',            color: '#B9B0E8', textColor: '#1E1A2E', rotate: 1.5 },
+  { num: '05', title: 'No Nonsense',       desc: 'Clear communication, no jargon. We speak human — always. No exceptions.',                     color: '#1E1A2E', textColor: '#FDF8F3', rotate: -0.5 },
 ];
 
 export default function Principles() {
@@ -25,11 +25,9 @@ export default function Principles() {
     <section id="principles" ref={containerRef} className="py-28 md:py-36 px-6 md:px-12 bg-[#FDF8F3] rounded-t-[48px] -mt-10 relative z-10">
       <div className="max-w-[1400px] mx-auto">
         <div className="principles-heading parallax-section-heading mb-14 md:mb-20">
-          <div className="mb-4">
-            <img src="/Squid_Final.svg" alt="" style={{ width: 60, height: 'auto' }} />
-          </div>
-          <h2 className="font-black text-5xl md:text-7xl text-[#1E1A2E] leading-[0.9]">
-            We don&apos;t mess around<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" />
+          <img src="/icon-squid.png" alt="" style={{ width: 80, height: 80, objectFit: 'contain' }} className="mb-0" />
+          <h2 style={{ fontFamily: "'BBH Hegarty', sans-serif", fontWeight: 400, letterSpacing: '-1px' }} className="text-5xl md:text-7xl text-[#1E1A2E] leading-[1]">
+            We don&apos;t mess around<span className="inline-block w-[0.13em] h-[0.13em] bg-[#FF4F40] rounded-[0.03em] ml-[0.06em] align-baseline" style={{ verticalAlign: '-0.05em' }} />
           </h2>
         </div>
         <div className="principles-grid grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5">
@@ -51,73 +49,43 @@ function PrincipleCard({ principle, size }: { principle: typeof PRINCIPLES[0]; s
 
   if (size === 'band') {
     return (
-      <div
-        ref={cardRef}
-        onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}
+      <div ref={cardRef} onMouseEnter={handleEnter} onMouseLeave={handleLeave}
         className="principle-card group relative overflow-hidden rounded-[28px] cursor-default"
-        style={{ backgroundColor: principle.color, color: principle.textColor, rotate: `${principle.rotate}deg` }}
+        style={{ backgroundColor: principle.color, rotate: `${principle.rotate}deg` }}
       >
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-8 md:p-10 lg:p-12 gap-6 md:gap-16">
-          <h3
-            className="font-black text-4xl md:text-5xl leading-tight"
-            style={{ color: principle.textColor, letterSpacing: '-1px' }}
-          >
+          <h3 style={{ fontFamily: "'BBH Hegarty', sans-serif", fontWeight: 400, color: principle.textColor, letterSpacing: '-1px' }} className="text-4xl md:text-[48px] leading-tight">
             {principle.title.replace('\n', ' ')}
           </h3>
-          <p
-            className="text-[14px] leading-relaxed max-w-sm shrink-0 md:text-right"
-            style={{ color: `${principle.textColor}99`, letterSpacing: '-0.02em' }}
-          >
+          <p className="text-[14px] leading-relaxed max-w-sm shrink-0 md:text-right" style={{ color: `${principle.textColor}99`, letterSpacing: '-0.02em' }}>
             {principle.desc}
           </p>
         </div>
-        {/* Big number watermark */}
-        <div
-          className="absolute -top-6 right-8 font-black leading-none select-none pointer-events-none"
-          style={{ fontSize: '16rem', color: principle.textColor, opacity: 0.05 }}
-        >
-          {principle.num}
-        </div>
+        <div className="absolute -top-6 right-8 leading-none select-none pointer-events-none" style={{ fontFamily: "'BBH Hegarty', sans-serif", fontSize: '16rem', color: principle.textColor, opacity: 0.05 }}>{principle.num}</div>
       </div>
     );
   }
 
   return (
-    <div
-      ref={cardRef}
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
+    <div ref={cardRef} onMouseEnter={handleEnter} onMouseLeave={handleLeave}
       className="principle-card group relative overflow-hidden rounded-[28px] h-full min-h-[340px] md:min-h-[380px] cursor-default"
-      style={{ backgroundColor: principle.color, color: principle.textColor, rotate: `${principle.rotate}deg` }}
+      style={{ backgroundColor: principle.color, rotate: `${principle.rotate}deg` }}
     >
       <div className="relative z-10 flex flex-col justify-between h-full p-8 md:p-10">
-        <div className="flex items-start">
+        <div>
           <div className="w-3 h-3 rounded-sm opacity-30" style={{ backgroundColor: principle.textColor }} />
         </div>
         <div>
-          <h3
-            className="font-black text-[48px] leading-[1] mb-3 whitespace-pre-line"
-            style={{ color: principle.textColor, letterSpacing: '-1px' }}
-          >
+          <h3 style={{ fontFamily: "'BBH Hegarty', sans-serif", fontWeight: 400, color: principle.textColor, letterSpacing: '-1px' }} className="text-[48px] leading-[1.05] mb-3 whitespace-pre-line">
             {principle.title}
           </h3>
           <div className="w-10 h-[2px] mb-4 opacity-25" style={{ backgroundColor: principle.textColor }} />
-          <p
-            className="text-[14px] leading-relaxed max-w-[280px]"
-            style={{ color: `${principle.textColor}99`, letterSpacing: '-0.02em' }}
-          >
+          <p className="text-[14px] leading-relaxed max-w-[280px]" style={{ color: `${principle.textColor}99`, letterSpacing: '-0.02em' }}>
             {principle.desc}
           </p>
         </div>
       </div>
-      {/* Big number watermark */}
-      <div
-        className="absolute -top-4 -right-4 font-black leading-none select-none pointer-events-none"
-        style={{ fontSize: '16rem', color: principle.textColor, opacity: 0.05 }}
-      >
-        {principle.num}
-      </div>
+      <div className="absolute -top-4 -right-4 leading-none select-none pointer-events-none" style={{ fontFamily: "'BBH Hegarty', sans-serif", fontSize: '16rem', color: principle.textColor, opacity: 0.05 }}>{principle.num}</div>
     </div>
   );
 }

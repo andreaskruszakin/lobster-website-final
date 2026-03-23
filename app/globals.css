@@ -7,6 +7,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'BBH Hegarty';
+  src: url('/fonts/BBHHegarty-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
 @theme inline {
   --font-sans: var(--font-rubik), sans-serif;
 }
