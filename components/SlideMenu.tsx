@@ -98,11 +98,11 @@ export default function SlideMenu({ isOpen, onClose }: Props) {
                     <span
                       className="block transition-opacity duration-150 group-hover:opacity-70"
                       style={{
-                        fontFamily: "'BBH Hegarty', sans-serif",
-                        fontWeight: 400,
-                        fontSize: 25,
-                        lineHeight: '28px',
-                        letterSpacing: '-0.2px',
+                        fontFamily: 'var(--font-rubik), sans-serif',
+                        fontWeight: 500,
+                        fontSize: 16,
+                        lineHeight: '24px',
+                        letterSpacing: '0px',
                         color: '#FF4F40',
                       }}
                     >

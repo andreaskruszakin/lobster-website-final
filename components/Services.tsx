@@ -67,7 +67,7 @@ export default function Services() {
           {SERVICES.map((service) => (
             <div
               key={service.num}
-              className="service-card group flex flex-col justify-between rounded-[28px] overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="service-card flex flex-col justify-between rounded-[28px] overflow-hidden"
               style={{ background: '#FDF8F3', flex: 1, minHeight: 467, padding: '24px 32px 32px' }}
             >
               {/* Top: number + title + capabilities + read more */}
@@ -87,10 +87,10 @@ export default function Services() {
                     <p key={cap} className="text-[16px] leading-[24px] text-[#1E1A2E]/60">{cap}</p>
                   ))}
                 </div>
-                <div className="flex items-center gap-2 mt-2">
-                  <span className="text-[16px] font-medium text-[#FF4F40] leading-[18px]">Read more</span>
+                <button className="group flex items-center gap-2 mt-2 w-fit">
+                  <span style={{ fontFamily: 'var(--font-rubik), sans-serif', fontSize: 16, fontWeight: 500, color: '#FF4F40', lineHeight: '18px' }}>Read more</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-[#FF4F40] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
-                </div>
+                </button>
               </div>
 
               {/* Bottom: icon */}
