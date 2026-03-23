@@ -4,12 +4,17 @@ import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import SlideMenu from './SlideMenu';
 
 export default function Navbar() {
+  const [isHidden, setIsHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { scrollY } = useScroll();
+  const lastYRef = useRef(0);
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
+    const diff = latest - lastYRef.current;
+    if (Math.abs(diff) > 5) setIsHidden(diff > 0 && latest > 100);
     setIsScrolled(latest > 80);
+    lastYRef.current = latest;
   });
 
   const scrollTo = (id: string) => {
@@ -29,8 +34,9 @@ export default function Navbar() {
         }`}
       >
         <motion.nav
+          variants={{ visible: { y: 0, opacity: 1 }, hidden: { y: -100, opacity: 0 } }}
           initial={{ y: -40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          animate={isHidden ? 'hidden' : 'visible'}
           transition={{ type: 'spring', stiffness: 260, damping: 24 }}
           className={`pointer-events-auto w-full px-5 py-3 flex items-center justify-between transition-all duration-500 ${
             onRed
@@ -61,30 +67,18 @@ export default function Navbar() {
               Contact
             </button>
 
-            {/* Services split pill — both open the slide menu */}
-            <div className="flex items-center">
-              <button
-                onClick={() => setMenuOpen(true)}
-                className={`px-4 py-2.5 rounded-l-xl text-[13px] font-medium transition-all duration-200 ${
-                  onRed
-                    ? 'bg-[rgba(253,248,243,0.15)] text-[#FDF8F3] hover:bg-[rgba(253,248,243,0.25)]'
-                    : 'text-[#1E1A2E]/60 hover:text-[#1E1A2E] hover:bg-[#1E1A2E]/[0.06]'
-                }`}
-              >
-                Services
-              </button>
-              <button
-                onClick={() => setMenuOpen(true)}
-                className={`w-[42px] h-[40px] rounded-r-xl flex items-center justify-center transition-all duration-200 ${
-                  onRed
-                    ? 'bg-[rgba(253,248,243,0.15)] text-[#FDF8F3] hover:bg-[rgba(253,248,243,0.25)]'
-                    : 'text-[#1E1A2E]/40 hover:text-[#1E1A2E] hover:bg-[#1E1A2E]/[0.06]'
-                }`}
-                aria-label="Services menu"
-              >
-                <span className="tracking-[0.15em] text-[10px]">•••</span>
-              </button>
-            </div>
+            {/* Services + dots — single unified button */}
+            <button
+              onClick={() => setMenuOpen(true)}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 ${
+                onRed
+                  ? 'bg-[rgba(253,248,243,0.15)] text-[#FDF8F3] hover:bg-[rgba(253,248,243,0.25)]'
+                  : 'text-[#1E1A2E]/60 hover:text-[#1E1A2E] hover:bg-[#1E1A2E]/[0.06]'
+              }`}
+            >
+              Services
+              <span className="tracking-[0.12em] text-[9px] opacity-60">•••</span>
+            </button>
           </div>
 
           {/* Center logo */}

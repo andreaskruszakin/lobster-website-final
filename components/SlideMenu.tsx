@@ -39,7 +39,7 @@ export default function SlideMenu({ isOpen, onClose }: Props) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-[#1E1A2E]/30 backdrop-blur-sm"
+            className="fixed inset-0 z-[60] bg-[#1E1A2E]/30 backdrop-blur-sm"
             onClick={onClose}
           />
 
@@ -50,7 +50,7 @@ export default function SlideMenu({ isOpen, onClose }: Props) {
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 32, mass: 0.8 }}
-            className="fixed top-0 left-0 h-full z-50 bg-[#FDF8F3] rounded-r-[28px] overflow-hidden"
+            className="fixed top-0 left-0 h-full z-[61] bg-[#FDF8F3] rounded-r-[28px] overflow-hidden"
             style={{ width: 'min(807px, 85vw)', padding: 32 }}
           >
             {/* Close button */}

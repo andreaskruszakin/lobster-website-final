@@ -67,7 +67,7 @@ export default function Services() {
           {SERVICES.map((service) => (
             <div
               key={service.num}
-              className="service-card group flex flex-col justify-between rounded-[28px] overflow-hidden cursor-pointer border border-[#1E1A2E]/[0.07] hover:border-[#1E1A2E]/[0.14] transition-colors duration-300"
+              className="service-card group flex flex-col justify-between rounded-[28px] overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition-shadow duration-300"
               style={{ background: '#FDF8F3', flex: 1, minHeight: 467, padding: '24px 32px 32px' }}
             >
               {/* Top: number + title + capabilities + read more */}
